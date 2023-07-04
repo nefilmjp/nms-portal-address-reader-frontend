@@ -28,7 +28,7 @@ export default function Home() {
           No Man&#39;s Sky Portal Address Reader (Alpha)
         </Heading>
         <Text mt='4'>
-          Read portal address from game screenshot.
+          Read the portal address from the game screenshot
           <br />
           Now under testing. Do not use large quantities in a short time.
         </Text>
