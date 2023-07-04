@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    tsconfigPath: 'tsconfig.build.json',
+    tsconfigPath: 'tsconfig.next.json',
   },
 };
 

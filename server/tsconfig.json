@@ -1,0 +1,15 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node18/tsconfig"],
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable"],
+    "module": "Node16",
+    "target": "es2022",
+    "moduleResolution": "node16",
+
+    "allowJs": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+  },
+  "include": ["**/*.mts"],
+}

@@ -1,5 +1,5 @@
 {
-  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
+  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node18/tsconfig"],
   "include": [
     "server/**/*",
     "scripts/**/*",
@@ -16,5 +16,5 @@
     "*.mts",
     "*.cts"
   ],
-  "exclude": ["node_modules", "src/**"]
+  "exclude": ["node_modules", ".mock", ".next", ".vercel", "api", "src"]
 }

@@ -12,6 +12,11 @@
   },
   // ESLint
   "eslint.enable": true,
+  "eslint.workingDirectories": [
+    "./",
+    "./src",
+    "./server",
+  ],
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true

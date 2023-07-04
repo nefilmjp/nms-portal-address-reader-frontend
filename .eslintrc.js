@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+
   rules: {
     'import/no-unresolved': 'error',
     'import/order': [
@@ -28,13 +29,14 @@ module.exports = {
       files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
       extends: [
         'plugin:@typescript-eslint/recommended',
+        'plugin:import/recommended',
         'next/core-web-vitals',
         'prettier',
       ],
       plugins: ['eslint-plugin-tsdoc'],
       rules: {
         'tsdoc/syntax': 'warn',
-        // utils/debugを除外
+        // Exclude utils/debug
         '@typescript-eslint/no-unused-vars': [
           'warn',
           { varsIgnorePattern: 'debug' },
@@ -62,17 +64,15 @@ module.exports = {
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
-        // 'plugin:import/recommended',
+        'plugin:import/recommended',
         'plugin:n/recommended',
         'prettier',
       ],
-      plugins: ['@typescript-eslint'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        ecmaVersion: 'latest',
-        project: './tsconfig.scripts.json',
-        tsconfigRootDir: __dirname,
-      },
+      // parserOptions: {
+      //   ecmaVersion: 'latest',
+      //   project: './tsconfig.scripts.json',
+      //   tsconfigRootDir: __dirname,
+      // },
       settings: {
         'import/parsers': {
           '@typescript-eslint/parser': ['.ts', '.mts', 'cts'],

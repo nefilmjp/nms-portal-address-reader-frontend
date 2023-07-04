@@ -1,0 +1,10 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node18/tsconfig"],
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable"],
+    "outDir": "./.mock"
+  },
+  "include": [
+    "server/mock.mts",
+  ],
+}

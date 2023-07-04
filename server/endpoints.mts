@@ -6,8 +6,8 @@ import type { FastifyPluginCallback } from 'fastify';
 
 dotenv.config();
 
-const apiUrl = process.env['NEXT_PUBLIC_API_URL']
-  ? process.env['NEXT_PUBLIC_API_URL']
+const apiUrl = process.env['PUBLIC_API_TRANSFER_URL']
+  ? process.env['PUBLIC_API_TRANSFER_URL']
   : '';
 
 export const endpoints: FastifyPluginCallback = (fastify, _options, done) => {

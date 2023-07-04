@@ -1,3 +1,6 @@
+.vercel
+.vscode
 .next
 out
-storybook-static
+api
+public

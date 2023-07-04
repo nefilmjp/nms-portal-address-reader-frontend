@@ -1,6 +1,6 @@
 'use client';
 
-import { Container, Heading } from '@chakra-ui/react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useUpdateEffect } from 'react-use';
 
@@ -27,6 +27,17 @@ export default function Home() {
         <Heading className='ff-geo' fontSize='2xl'>
           No Man&#39;s Sky Portal Address Reader (Alpha)
         </Heading>
+        <Text mt='4'>
+          Read portal address from game screenshot.
+          <br />
+          Now under testing. Do not use large quantities in a short time.
+        </Text>
+        <Text mt='2'>
+          Supported resolutions:
+          <br />
+          1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
+          3840x2160
+        </Text>
         <Dropzone setSource={setSource} />
         <SelectProfile profile={profile} setProfile={setProfile} />
         <Source source={source} />

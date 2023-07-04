@@ -1,6 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "exclude": [
-    "**/*.module.scss.d.ts",
-  ]
-}

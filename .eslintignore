@@ -1,4 +1,7 @@
+.vercel
+.vscode
 .next
+.mock
 out
 api
 public

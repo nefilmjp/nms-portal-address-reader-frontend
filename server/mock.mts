@@ -5,8 +5,8 @@ import { server } from './server.mjs';
 
 dotenv.config();
 
-const port = process.env['PUBLIC_LOCAL_API_PORT']
-  ? parseInt(process.env['PUBLIC_LOCAL_API_PORT'], 10)
+const port = process.env['PUBLIC_MOCK_PORT']
+  ? parseInt(process.env['PUBLIC_MOCK_PORT'], 10)
   : 5050;
 
 await server.register(cors, {
@@ -15,4 +15,6 @@ await server.register(cors, {
 
 await server.ready();
 
-await server.listen({ port });
+await server.listen({ port, host: '0.0.0.0' });
+
+console.log();

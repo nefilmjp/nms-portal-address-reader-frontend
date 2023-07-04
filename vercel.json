@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/serverless.js"
+      "source": "/api/health",
+      "destination": "/api/serverless"
+    },
+    {
+      "source": "/api/parse",
+      "destination": "/api/serverless"
     }
   ]
 }

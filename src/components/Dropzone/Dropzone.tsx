@@ -91,14 +91,6 @@ export const Dropzone = ({ ...props }: DropzoneProps) => {
           </Center>
         </div>
       </Box>
-      <Center>
-        <Text mt='4'>
-          Supported resolutions:
-          <br />
-          1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-          3840x2160
-        </Text>
-      </Center>
     </>
   );
 };
