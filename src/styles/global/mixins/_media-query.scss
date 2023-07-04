@@ -1,0 +1,130 @@
+@use '../functions' as *;
+@use '../variables' as *;
+
+////
+/// @group global
+////
+
+/*
+- ～519: Mobile
+- 520～959: Tablet
+- 960～: Desktop
+- 1089～: Large
+- 最小幅は320pxまで想定する
+- コンテナは最大1088pxまで広がる
+
+(320)     520      960     1088     (∞)
+  |320  519|520  959|960 1088|1089   |
+  |--------|--------|--------|-------|
+  | mobile | tablet |    desktop     |
+  |--------|--------|--------|-------|
+  |      small      | medium | large |
+  |--------|--------|--------|-------|
+  |////////|        non-mobile       |
+  |--------|--------|--------|-------|
+  |////////|     middle      |///////|
+  |--------|--------|--------|-------|
+  |         container        |///////|
+  |--------|--------|--------|-------|
+*/
+
+/// メディアクエリ/範囲指定
+/// - 「$min以上・$max未満」で出力される
+/// - よって$maxは常に-1される（事前に調整しないよう注意）
+/// - 引数は数値またはpxで指定する（混在可）
+/// @param {Number} $min [0] min-width側, 0は省略と見なす
+/// @param {Number} $max [0] max-width側, 常に-1される, 省略可
+@mixin mq($min: 0, $max: 0) {
+  $min: strip-unit($min);
+  $max: strip-unit($max);
+
+  @if $max != 0 {
+    $max: $max * 1px - 1px;
+  }
+
+  @if $min != 0 {
+    $min: $min * 1px;
+  }
+
+  @if $max != 0 and $min != 0 {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == 0 {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  } @else if $min == 0 {
+    @media screen and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// ---------------------------------------------------------
+// 定義
+
+/// メディアクエリ/Mobile/～519px
+@mixin mq-mobile {
+  @include mq(0, $bp-mobile) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Tablet/520～959px
+@mixin mq-tablet {
+  @include mq($bp-mobile, $bp-tablet) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Desktop/960px～
+@mixin mq-desktop {
+  @include mq($bp-tablet) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Small/～959px
+@mixin mq-small {
+  @include mq(0, $bp-tablet) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Medium/960～1088px
+@mixin mq-medium {
+  @include mq($bp-tablet, $bp-container) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Large/1089px～
+@mixin mq-large {
+  @include mq($bp-container) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Non-mobile/520px～
+@mixin mq-non-mobile {
+  @include mq($bp-mobile) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Middle/520～1088px
+@mixin mq-middle {
+  @include mq($bp-mobilem, $bp-container) {
+    @content;
+  }
+}
+
+/// メディアクエリ/Container/～1088px
+@mixin mq-container {
+  @include mq(0, $bp-container) {
+    @content;
+  }
+}

@@ -1,0 +1,17 @@
+@use 'sass:math';
+
+////
+/// @group global
+////
+
+/// 単位を取り除く
+/// @param {Number} $number 単位付きの値
+/// @return {Number}
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, ($number * 0) + 1);
+  }
+
+  @return $number;
+}

@@ -1,0 +1,36 @@
+@use '@/styles/global' as *;
+
+////
+/// @group core
+////
+
+@font-face {
+  font-family: NMSGeoSans;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizelegibility;
+  src: url('https://font.nmscd.com/assets/font/NMSGeoSans_Kerned/Web-TT/NMSGeoSans_Kerned.woff')
+      format('woff'),
+    url('https://font.nmscd.com/assets/font/NMSGeoSans_Kerned/Web-TT/NMSGeoSans_Kerned.ttf')
+      format('truetype');
+}
+
+// @font-face {
+//   font-family: NMSFuturaProBook;
+//   font-style: normal;
+//   font-weight: normal;
+//   text-rendering: optimizelegibility;
+//   src: url('https://font.nmscd.com/assets/font/NMSFuturaProBook_Kerned/Web-TT/NMSFuturaProBook_Kerned.woff')
+//       format('woff'),
+//     url('https://font.nmscd.com/assets/font/NMSFuturaProBook_Kerned/Web-TT/NMSFuturaProBook_Kerned.ttf')
+//       format('truetype');
+// }
+
+@font-face {
+  font-family: NMSGlyphsMono;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizelegibility;
+  src: url('/assets/fonts/NMS-Glyphs-Mono.woff') format('woff'),
+    url('/assets/fonts/NMS-Glyphs-Mono.ttf') format('truetype');
+}

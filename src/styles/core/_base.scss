@@ -1,0 +1,33 @@
+@use '@/styles/global' as *;
+
+////
+/// @group core
+////
+
+body {
+  @include f;
+
+  color: $c-text;
+  font-family: $ff;
+}
+
+input,
+textarea,
+keygen,
+select {
+  @include f;
+}
+
+img,
+svg {
+  vertical-align: bottom;
+}
+
+:focus-visible {
+  outline: none;
+}
+
+main {
+  position: relative;
+  z-index: z('main');
+}

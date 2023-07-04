@@ -1,0 +1,14 @@
+@use '@/styles/global' as *;
+
+.container {
+  position: relative;
+}
+
+.dropzone {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}

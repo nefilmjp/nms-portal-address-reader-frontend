@@ -1,0 +1,27 @@
+@use '@/styles/global' as *;
+
+////
+/// @group core
+////
+
+// "The New CSS Reset" 調整用
+// - 強すぎる設定の差し戻しのみ記述すること
+// - それ以外は `_base.scss` に記述のこと
+
+a {
+  outline: revert;
+  cursor: revert;
+}
+
+button {
+  outline: revert;
+}
+
+input,
+textarea,
+keygen,
+select {
+  all: revert;
+  box-sizing: border-box;
+  font: unset;
+}

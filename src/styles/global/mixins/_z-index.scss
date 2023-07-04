@@ -1,0 +1,18 @@
+@use '../variables' as *;
+
+////
+/// @group global
+////
+
+/// z-index
+/// - $z-indexesリストを元に100刻みでz-indexの値を返す
+/// @param {String} $name $z-indexes内の要素名
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return ((length($z-indexes) - index($z-indexes, $name)) + 1) * 100;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+
+    @return null;
+  }
+}

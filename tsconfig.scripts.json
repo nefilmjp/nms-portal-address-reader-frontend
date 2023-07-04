@@ -1,0 +1,20 @@
+{
+  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
+  "include": [
+    "server/**/*",
+    "scripts/**/*",
+    ".*.js",
+    ".*.mjs",
+    ".*.cjs",
+    ".*.ts",
+    ".*.mts",
+    ".*.cts",
+    "*.js",
+    "*.mjs",
+    "*.cjs",
+    "*.ts",
+    "*.mts",
+    "*.cts"
+  ],
+  "exclude": ["node_modules", "src/**"]
+}

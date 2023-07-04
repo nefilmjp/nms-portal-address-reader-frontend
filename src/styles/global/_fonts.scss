@@ -1,0 +1,19 @@
+@use 'sass:math';
+
+////
+/// @group global
+////
+
+$ff: roboto, 'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans',
+  'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', meiryo, sans-serif;
+
+$ff-nms-geo: nmsgeosans, 'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans',
+  'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', meiryo, sans-serif;
+
+// $ff-nms-future: nmsfuturaprobook, 'Noto Sans JP', 'Noto Sans CJK JP',
+//   'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', meiryo,
+//   sans-serif;
+
+$ff-nms-glyphs: 'NMSGlyphsMono', 'Noto Sans JP', 'Noto Sans CJK JP',
+  'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'BIZ UDPGothic', meiryo,
+  sans-serif;
