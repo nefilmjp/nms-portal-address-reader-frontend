@@ -1,12 +1,12 @@
 import { HStack, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-interface SelectProfileProps {
+interface SourceProfileProps {
   profile: string;
   setProfile: (profile: string) => void;
 }
 
-export const SelectProfile = ({ ...props }: SelectProfileProps) => {
+export const SourceProfile = ({ ...props }: SourceProfileProps) => {
   const { profile, setProfile } = props;
 
   const [storageProfile, setStorageProfile] = useLocalStorage<string>(
@@ -19,7 +19,7 @@ export const SelectProfile = ({ ...props }: SelectProfileProps) => {
   useUpdateEffect(() => setStorageProfile(profile), [profile]);
 
   return (
-    <HStack mt='4' display='flex' justifyContent='center'>
+    <HStack mt='1' display='flex' justifyContent='center'>
       <Text>Image Profile:</Text>
       <RadioGroup defaultValue={profile} onChange={setProfile} value={profile}>
         <Stack spacing={5} direction='row'>

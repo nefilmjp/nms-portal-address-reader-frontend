@@ -6,7 +6,7 @@ export const isFileValid = (file: File) => {
   return false;
 };
 
-export const loadImage = async (file: File): Promise<HTMLImageElement> =>
+export const loadImage = async (file: File | Blob): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
@@ -104,8 +104,6 @@ export const getAddressBase64 = (img: HTMLImageElement): string | false => {
   addrCanvas.width = cropProfile.box * 12;
   addrCanvas.height = cropProfile.box;
   addrCtx.putImageData(addrImage, 0, 0);
-
-  console.log(aspectRatio, cropProfile);
 
   // Convert to Base64
   return addrCanvas.toDataURL('image/jpeg', 0.9);

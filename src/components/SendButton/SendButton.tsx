@@ -20,8 +20,9 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
   const toast = useToast();
 
   return (
-    <Center mt='8'>
+    <Center mt='6'>
       <Button
+        size='lg'
         colorScheme='blue'
         isDisabled={!source || isBusy || Boolean(addrArray)}
         onClick={async () => {

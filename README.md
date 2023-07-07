@@ -3,10 +3,16 @@
 ## tsconfig.json
 
 - `tsconfig.json`
-    - Running Mock
+    - Fallback
+- `src/tsconfig.json`
+    - Development/Next.js
+- `server/tsconfig.json`
+    - Development/API Mock/Serverless
 - `tsconfig.next.json`
-    - Next.js
+    - Build/Next.js
 - `tsconfig.scripts.json`
-    - Development for Scripts/Serveless/Mock
+    - (Reserved)
+- `tsconfig.mock.json`
+    - Build/API Mock
 - `tsconfig.serverless.json`
-    - Production build for Serverless
+    - Build/Vercel Serverless Functions

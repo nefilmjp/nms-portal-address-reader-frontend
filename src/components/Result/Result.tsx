@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Center,
   Input,
@@ -30,23 +29,36 @@ export const Result = ({ ...props }: ResultProps) => {
 
   return (
     <>
-      <Box
-        mt='8'
-        border='1px'
-        borderRadius='md'
-        borderColor={hex ? 'gray.200' : 'gray.100'}
-      >
-        <Center h='64px'>
-          {hex ? (
-            <Text fontSize='4xl' className='ff-glyphs'>
+      <Center>
+        {hex ? (
+          <Center color='white' bgColor='black' aspectRatio='384 / 32'>
+            <Text
+              className='ff-glyphs'
+              fontSize='min(32px, calc((100vw - 32px) / 12))'
+              letterSpacing='0'
+              fontWeight='400'
+              aspectRatio='384 / 32'
+              textShadow='0 0 4px #fff, 0 0 2px #fff'
+              lineHeight='1'
+              overflow='hidden'
+            >
               {hex}
             </Text>
-          ) : (
-            <Text color='gray.400'>Portal Glyphs</Text>
-          )}
-        </Center>
-      </Box>
-      <InputGroup mt='4' size='md'>
+          </Center>
+        ) : (
+          <Center
+            border='1px'
+            borderColor='gray'
+            aspectRatio='384 / 32'
+            borderTop='none'
+            width='100%'
+            maxW='384px'
+          >
+            <Text color='gray'>Result</Text>
+          </Center>
+        )}
+      </Center>
+      <InputGroup mt='6' size='md'>
         <Input
           pr='4.5rem'
           type='text'

@@ -8,13 +8,13 @@ import {
   loadImage,
 } from '@/utils/fileValidator';
 
-import styles from './Dropzone.module.scss';
+import styles from './SourceFile.module.scss';
 
-interface DropzoneProps {
+interface SourceFileProps {
   setSource: (base64: string | undefined) => void;
 }
 
-export const Dropzone = ({ ...props }: DropzoneProps) => {
+export const SourceFile = ({ ...props }: SourceFileProps) => {
   const { setSource } = props;
 
   const toast = useToast();
@@ -34,7 +34,6 @@ export const Dropzone = ({ ...props }: DropzoneProps) => {
       !(acceptedFile instanceof File) ||
       !isFileValid(acceptedFile)
     ) {
-      console.error('Invalid type', acceptedFile.type);
       toast({
         title: 'Invalid type.',
         description: 'Only JPEG or PNG can be accepted.',
@@ -70,10 +69,11 @@ export const Dropzone = ({ ...props }: DropzoneProps) => {
   return (
     <>
       <Box
-        mt='6'
         h='100px'
         borderRadius='lg'
-        bgColor='gray.100'
+        borderWidth='1px'
+        borderColor='blue.800'
+        bgColor='blue.50'
         className={styles.container}
       >
         <div {...getRootProps()} className={styles.dropzone}>
@@ -85,7 +85,7 @@ export const Dropzone = ({ ...props }: DropzoneProps) => {
               </Text>
             ) : (
               <Text align='center' fontSize='lg'>
-                Drop a screenshot here, or click to select a file.
+                Drop the screenshot here, or click to select a file.
               </Text>
             )}
           </Center>

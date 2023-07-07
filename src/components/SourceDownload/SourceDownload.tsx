@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Button,
   Input,
   InputGroup,
@@ -8,17 +10,18 @@ import {
 import { ChangeEvent, useMemo, useState } from 'react';
 
 import { extendedFetch } from '@/utils/extendedFetch';
+import { getAddressBase64, loadImage } from '@/utils/fileValidator';
 
-interface DownloadProps {
+interface SourceDownloadProps {
   setSource: (base64: string | undefined) => void;
 }
 
-export const Download = ({ ...props }: DownloadProps) => {
-  const {} = props;
+export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
+  const { setSource } = props;
 
   const toast = useToast();
 
-  const [downloadUrl, setDownloadUrl] = useState<string | undefined>();
+  const [downloadUrl, setSourceDownloadUrl] = useState<string | undefined>();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
   const handleInput = useMemo(
@@ -41,33 +44,46 @@ export const Download = ({ ...props }: DownloadProps) => {
           url.searchParams.delete('name');
           url.searchParams.append('name', 'orig');
         }
-        setDownloadUrl(event.target.value);
+
+        setSourceDownloadUrl(url.href);
       } catch {
-        setDownloadUrl(undefined);
+        setSourceDownloadUrl(undefined);
       }
     },
     [],
   );
 
   const handleDownload = useMemo(
-    () => async () => {
-      console.log('handleDownload', downloadUrl);
+    () => async (downloadUrl: string) => {
+      setSource(undefined);
       if (!downloadUrl) return;
       setIsBusy(true);
       await extendedFetch(downloadUrl, {
         timeout: 10000,
         maxRetryCount: 0,
       })
-        .then((res) => res.blob)
-        .then((blob) => {
-          if (
-            blob instanceof File &&
-            (blob.type === 'image/jpeg' || blob.type === 'image/png')
-          ) {
+        .then((res) => res.blob())
+        .then(async (blob) => {
+          fetch;
+          if (blob.type === 'image/jpeg' || blob.type === 'image/png') {
+            const img = await loadImage(blob);
+            const base64 = getAddressBase64(img);
+            if (base64) setSource(base64);
+            else {
+              toast({
+                title: 'Invalid image.',
+                description:
+                  'The image does not acceptable. Mostly, the size is wrong.',
+                status: 'error',
+                duration: 10000,
+                isClosable: true,
+              });
+              setSource(undefined);
+            }
           } else {
             toast({
               title: 'Invalid type.',
-              description: 'Only JPEG or PNG files can be accepted.',
+              description: 'Only JPEG or PNG can be accepted.',
               status: 'error',
               duration: 10000,
               isClosable: true,
@@ -76,7 +92,7 @@ export const Download = ({ ...props }: DownloadProps) => {
         })
         .catch(() => {
           toast({
-            title: 'Download failed.',
+            title: 'SourceDownload failed.',
             description: 'Server is not responding.',
             status: 'error',
             duration: 10000,
@@ -93,18 +109,25 @@ export const Download = ({ ...props }: DownloadProps) => {
     <div>
       <InputGroup size='md'>
         <Input
+          border='1px'
+          borderColor='blue.800'
+          bgColor='blue.50'
           pr='6.5rem'
           type='text'
-          placeholder='Enter an image URL'
+          placeholder='Enter the image URL'
           isDisabled={isBusy}
           onChange={handleInput}
         />
         <InputRightElement width='6.5rem'>
           <Button
+            colorScheme='blue'
+            fontWeight='400'
             h='1.75rem'
             size='sm'
             isDisabled={!downloadUrl || isBusy}
-            onClick={handleDownload}
+            onClick={() => {
+              if (downloadUrl) handleDownload(downloadUrl);
+            }}
           >
             Download
           </Button>
