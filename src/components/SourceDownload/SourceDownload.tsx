@@ -1,10 +1,4 @@
-import {
-  Button,
-  Input,
-  InputGroup,
-  InputRightElement,
-  useToast,
-} from '@chakra-ui/react';
+import { Button, HStack, Input, useToast } from '@chakra-ui/react';
 import { ChangeEvent, useMemo, useState } from 'react';
 
 import { extendedFetch } from '@/utils/extendedFetch';
@@ -19,13 +13,17 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
 
   const toast = useToast();
 
-  const [downloadUrl, setSourceDownloadUrl] = useState<string | undefined>();
+  const [value, setValue] = useState('');
+  const [downloadUrl, setDownloadUrl] = useState<string | undefined>();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
   const handleInput = useMemo(
     () => (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
+      setValue(value);
       try {
+        if (!value) throw new Error('Empty');
+
         const url = new URL(value);
 
         if (url.protocol !== 'https:' && url.protocol !== 'http:')
@@ -43,9 +41,9 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
           url.searchParams.append('name', 'orig');
         }
 
-        setSourceDownloadUrl(url.href);
+        setDownloadUrl(url.href);
       } catch {
-        setSourceDownloadUrl(undefined);
+        setDownloadUrl(undefined);
       }
     },
     [],
@@ -90,8 +88,8 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
         })
         .catch(() => {
           toast({
-            title: 'SourceDownload failed.',
-            description: 'Server is not responding.',
+            title: 'Download failed.',
+            description: 'The server is not responding.',
             status: 'error',
             duration: 10000,
             isClosable: true,
@@ -104,33 +102,40 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
   );
 
   return (
-    <div>
-      <InputGroup size='md'>
-        <Input
-          border='1px'
-          borderColor='blue.800'
-          bgColor='blue.50'
-          pr='6.5rem'
-          type='text'
-          placeholder='Enter the image URL'
-          isDisabled={isBusy}
-          onChange={handleInput}
-        />
-        <InputRightElement width='6.5rem'>
-          <Button
-            colorScheme='blue'
-            fontWeight='400'
-            h='1.75rem'
-            size='sm'
-            isDisabled={!downloadUrl || isBusy}
-            onClick={() => {
-              if (downloadUrl) handleDownload(downloadUrl);
-            }}
-          >
-            Download
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-    </div>
+    <>
+      <Input
+        size='lg'
+        border='1px'
+        borderColor='blue.800'
+        bgColor='blue.50'
+        pr='6.5rem'
+        type='text'
+        placeholder='Enter the image URL'
+        isDisabled={isBusy}
+        onChange={handleInput}
+        value={value}
+      />
+      <HStack mt='4' spacing='4' justifyContent='center'>
+        <Button
+          colorScheme='blackAlpha'
+          isDisabled={!value || isBusy}
+          onClick={() => {
+            setValue('');
+            setDownloadUrl(undefined);
+          }}
+        >
+          Reset
+        </Button>
+        <Button
+          colorScheme='blue'
+          isDisabled={!downloadUrl || isBusy}
+          onClick={() => {
+            if (downloadUrl) handleDownload(downloadUrl);
+          }}
+        >
+          Download
+        </Button>
+      </HStack>
+    </>
   );
 };

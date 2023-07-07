@@ -56,7 +56,7 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
             .catch(() => {
               setAddrArray(undefined);
               toast({
-                title: 'Server not respond.',
+                title: 'The server is not responding.',
                 description: 'Network error or server is dead.',
                 status: 'error',
                 duration: 10000,

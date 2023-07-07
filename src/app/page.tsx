@@ -58,7 +58,7 @@ export default function Home() {
         <Tabs mt='6' onChange={() => setSource(undefined)}>
           <TabList>
             <Tab>File</Tab>
-            <Tab>Clipboard</Tab>
+            {Boolean(navigator.clipboard.read) && <Tab>Clipboard</Tab>}
             <Tab>Download</Tab>
           </TabList>
 
@@ -66,9 +66,11 @@ export default function Home() {
             <TabPanel>
               <SourceFile setSource={setSource} />
             </TabPanel>
-            <TabPanel>
-              <SourceClipboard setSource={setSource} />
-            </TabPanel>
+            {Boolean(navigator.clipboard.read) && (
+              <TabPanel>
+                <SourceClipboard setSource={setSource} />
+              </TabPanel>
+            )}
             <TabPanel>
               <SourceDownload setSource={setSource} />
             </TabPanel>
