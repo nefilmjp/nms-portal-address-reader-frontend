@@ -1,6 +1,4 @@
 import {
-  Alert,
-  AlertIcon,
   Button,
   Input,
   InputGroup,
