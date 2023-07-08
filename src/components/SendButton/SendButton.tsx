@@ -1,11 +1,13 @@
 import { Button, Center, useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import type { AddressArray } from '@/types';
+
 interface SendButtonProps {
   source: string | undefined;
   profile: string;
-  addrArray: number[] | undefined;
-  setAddrArray: (addrArray: number[] | undefined) => void;
+  addrArray: AddressArray | undefined;
+  setAddrArray: (addrArray: AddressArray | undefined) => void;
 }
 
 const apiUrl = process.env['NEXT_PUBLIC_API_URL']

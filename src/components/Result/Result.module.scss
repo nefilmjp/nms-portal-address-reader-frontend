@@ -1,0 +1,53 @@
+@use '@/styles/global' as *;
+
+.glyph {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: min(32px, calc((100vw - 32px) / 12));
+  height: min(32px, calc((100vw - 32px) / 12));
+  background-color: #000;
+  color: #fff;
+  font-family: $ff-nms-glyphs;
+  font-size: min(32px, calc((100vw - 32px) / 12));
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 4px #fff, 0 0 2px #fff;
+  cursor: pointer;
+  aspect-ratio: 1/1;
+
+  .isSelected & {
+    background-color: #fff;
+    color: #000;
+    text-shadow: 0 0 4px #000, 0 0 2px #000;
+  }
+
+  .editor & {
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+  }
+}
+
+.button {
+  display: block;
+
+  &:hover {
+    z-index: 2;
+    border-radius: 2px;
+    outline: 2px solid var(--chakra-colors-blue-300);
+  }
+}
+
+.label {
+  display: block;
+  border-width: 1px;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: repeat(8, auto);
+  justify-content: center;
+}

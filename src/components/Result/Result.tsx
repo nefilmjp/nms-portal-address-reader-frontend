@@ -1,55 +1,38 @@
-import {
-  Button,
-  Center,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text,
-} from '@chakra-ui/react';
-import { useMemo } from 'react';
+import { Center, Text } from '@chakra-ui/react';
+import { useId } from 'react';
 
-import { addrArrayToDec, addrArrayToHex } from '@/utils/converter';
+import { ResultGlyph } from './ResultGlyph';
+
+import type { AddressArray } from '@/types';
 
 interface ResultProps {
-  addrArray: number[] | undefined;
+  addrArray: AddressArray | undefined;
+  setAddrArray: (addrArray: AddressArray | undefined) => void;
 }
 
 export const Result = ({ ...props }: ResultProps) => {
-  const { addrArray } = props;
+  const { addrArray, setAddrArray } = props;
 
-  const dec = useMemo(
-    () => (addrArray ? addrArrayToDec(addrArray) : undefined),
-    [addrArray],
-  );
-
-  const hex = useMemo(
-    () => (addrArray ? addrArrayToHex(addrArray) : undefined),
-    [addrArray],
-  );
+  const id = useId();
 
   return (
     <>
       <Center>
-        {hex ? (
-          <Center color='white' bgColor='black' aspectRatio='384 / 32'>
-            <Text
-              className='ff-glyphs'
-              fontSize='min(32px, calc((100vw - 32px) / 12))'
-              letterSpacing='0'
-              fontWeight='400'
-              aspectRatio='384 / 32'
-              textShadow='0 0 4px #fff, 0 0 2px #fff'
-              lineHeight='1'
-              overflow='hidden'
-            >
-              {hex}
-            </Text>
-          </Center>
+        {addrArray ? (
+          addrArray.map((_, idx) => (
+            <ResultGlyph
+              key={`${id}-${idx}`}
+              addrArray={addrArray}
+              setAddrArray={setAddrArray}
+              index={idx}
+            />
+          ))
         ) : (
           <Center
             border='1px'
             borderColor='gray'
             aspectRatio='384 / 32'
+            // aspectRatio='384 / 55'
             borderTop='none'
             width='100%'
             maxW='384px'
@@ -58,48 +41,6 @@ export const Result = ({ ...props }: ResultProps) => {
           </Center>
         )}
       </Center>
-      <InputGroup mt='6' size='md'>
-        <Input
-          pr='4.5rem'
-          type='text'
-          value={dec || ''}
-          placeholder='Comma-separated decimal'
-          isDisabled={!hex}
-        />
-        <InputRightElement width='4.5rem'>
-          <Button
-            h='1.75rem'
-            size='sm'
-            onClick={() => {
-              navigator.clipboard.writeText(dec || '');
-            }}
-            isDisabled={!dec}
-          >
-            Copy
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-      <InputGroup mt='4' size='md'>
-        <Input
-          pr='4.5rem'
-          type='text'
-          value={hex || ''}
-          placeholder='12-digit hex'
-          isDisabled={!hex}
-        />
-        <InputRightElement width='4.5rem'>
-          <Button
-            h='1.75rem'
-            size='sm'
-            onClick={() => {
-              navigator.clipboard.writeText(hex || '');
-            }}
-            isDisabled={!hex}
-          >
-            Copy
-          </Button>
-        </InputRightElement>
-      </InputGroup>
     </>
   );
 };

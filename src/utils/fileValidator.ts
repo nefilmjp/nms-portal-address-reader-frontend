@@ -1,6 +1,7 @@
 import { CROP_PROFILES } from '@/config';
 
-export const isFileValid = (file: File) => {
+export const isFileValid = (file: File | Blob) => {
+  if (!('type' in file)) return false;
   if (file.type === 'image/jpeg') return true;
   else if (file.type === 'image/png') return true;
   return false;
