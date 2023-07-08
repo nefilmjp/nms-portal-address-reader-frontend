@@ -30,3 +30,18 @@ export type AddressArray = [
   GlyphNumber,
   GlyphNumber,
 ];
+
+export interface Options {
+  /** UI Option */
+  sendImmediately?: boolean;
+  /** API Option */
+  claheValueThreshold?: number;
+  /** API Option */
+  claheClipLimit?: number;
+  /** API Option */
+  claheTileGridSizeX?: number;
+  /** API Option */
+  claheTileGridSizeY?: number;
+  /** API Option */
+  bfmLengthLimit?: number;
+}

@@ -24,12 +24,13 @@ import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
 import { SourceProfile } from '@/components/SourceProfile';
 
-import type { AddressArray } from '@/types';
+import type { AddressArray, Options } from '@/types';
 
 export default function Home() {
   const [source, setSource] = useState<string | undefined>();
   const [profile, setProfile] = useState<string>('');
   const [addrArray, setAddrArray] = useState<AddressArray | undefined>();
+  const [options, setOptions] = useState<Options>({});
 
   const [canPaste, setCanPaste] = useState<boolean>(false);
 
@@ -51,7 +52,7 @@ export default function Home() {
             <Heading className='ff-geo' fontSize='2xl'>
               <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
               <span style={{ whiteSpace: 'nowrap' }}>
-                Portal Address Reader (Alpha)
+                Portal Address Reader (Beta)
               </span>
             </Heading>
             <Text mt='4'>
@@ -91,6 +92,7 @@ export default function Home() {
             </Tabs>
             <SourceProfile profile={profile} setProfile={setProfile} />
             <SendButton
+              options={options}
               source={source}
               profile={profile}
               addrArray={addrArray}
@@ -102,9 +104,9 @@ export default function Home() {
 
             <ResultOutput addrArray={addrArray} />
           </Container>
-        </Center>{' '}
+        </Center>
       </main>
-      <Footer />
+      <Footer options={options} setOptions={setOptions} />
     </>
   );
 }

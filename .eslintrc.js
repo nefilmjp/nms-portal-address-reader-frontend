@@ -29,7 +29,7 @@ module.exports = {
       files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
       extends: [
         'plugin:@typescript-eslint/recommended',
-        'plugin:import/recommended',
+        // 'plugin:import/recommended',
         'next/core-web-vitals',
         'prettier',
       ],
@@ -64,7 +64,7 @@ module.exports = {
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
-        'plugin:import/recommended',
+        // 'plugin:import/recommended',
         'plugin:n/recommended',
         'prettier',
       ],
