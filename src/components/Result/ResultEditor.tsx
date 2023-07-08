@@ -1,4 +1,5 @@
-import { useId } from 'react';
+import clsx from 'clsx';
+import { useId, useMemo } from 'react';
 
 import styles from './Result.module.scss';
 
@@ -16,13 +17,21 @@ export const ResultEditor = ({ ...props }: ResultEditorProps) => {
 
   const id = useId();
 
+  const isSelected = useMemo(
+    () => (idx: number) => addrArray[index] === idx,
+    [addrArray, index],
+  );
+
   return (
     <div className={styles.editor}>
       {[...Array(16)]
         .map((_, i) => i)
         .map((_, idx) => (
           <button
-            className={styles.button}
+            className={clsx(
+              styles.button,
+              isSelected(idx) && styles.isSelected,
+            )}
             key={`${id}-${idx}`}
             onClick={() => {
               const newAddrArray = [...addrArray] as AddressArray;
@@ -31,7 +40,7 @@ export const ResultEditor = ({ ...props }: ResultEditorProps) => {
               onClose();
             }}
           >
-            <span className={styles.glyph}>
+            <span className={clsx(styles.glyph, styles.isPopover)}>
               {idx.toString(16).toUpperCase()}
             </span>
             {/* <span className={styles.label}>{idx + 1}</span> */}

@@ -14,6 +14,7 @@ import {
 import { useState } from 'react';
 import { useMount, useUpdateEffect } from 'react-use';
 
+import { Footer } from '@/components/Footer';
 import { Result } from '@/components/Result/Result';
 import { ResultOutput } from '@/components/ResultOutput';
 import { SendButton } from '@/components/SendButton';
@@ -43,64 +44,67 @@ export default function Home() {
   });
 
   return (
-    <main>
-      <Center>
-        <Container maxW='2xl' mt='6' mb='6'>
-          <Heading className='ff-geo' fontSize='2xl'>
-            <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
-            <span style={{ whiteSpace: 'nowrap' }}>
-              Portal Address Reader (Alpha)
-            </span>
-          </Heading>
-          <Text mt='4'>
-            The portal address reader in the screenshot.
-            <br />
-            Testing is in progress.
-            <br />
-            Don&#39;t use a lot of it in a short time.
-          </Text>
-          <Text mt='4'>
-            Supported resolutions:
-            <br />
-            1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-            3840x2160
-          </Text>
+    <>
+      <main>
+        <Center>
+          <Container maxW='2xl' mt='6' mb='16'>
+            <Heading className='ff-geo' fontSize='2xl'>
+              <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
+              <span style={{ whiteSpace: 'nowrap' }}>
+                Portal Address Reader (Alpha)
+              </span>
+            </Heading>
+            <Text mt='4'>
+              The portal address reader in the screenshot.
+              <br />
+              Testing is in progress.
+              <br />
+              Don&#39;t use a lot of it in a short time.
+            </Text>
+            <Text mt='4'>
+              Supported resolutions:
+              <br />
+              1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
+              3840x2160
+            </Text>
 
-          <Tabs mt='6' onChange={() => setSource(undefined)}>
-            <TabList>
-              <Tab>File</Tab>
-              {canPaste && <Tab>Clipboard</Tab>}
-              <Tab>Download</Tab>
-            </TabList>
+            <Tabs mt='6' onChange={() => setSource(undefined)}>
+              <TabList>
+                <Tab>File</Tab>
+                {canPaste && <Tab>Clipboard</Tab>}
+                <Tab>Download</Tab>
+              </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <SourceFile setSource={setSource} />
-              </TabPanel>
-              {canPaste && (
+              <TabPanels>
                 <TabPanel>
-                  <SourceClipboard setSource={setSource} />
+                  <SourceFile setSource={setSource} />
                 </TabPanel>
-              )}
-              <TabPanel>
-                <SourceDownload setSource={setSource} />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-          <SourceProfile profile={profile} setProfile={setProfile} />
-          <SendButton
-            source={source}
-            profile={profile}
-            addrArray={addrArray}
-            setAddrArray={setAddrArray}
-          />
+                {canPaste && (
+                  <TabPanel>
+                    <SourceClipboard setSource={setSource} />
+                  </TabPanel>
+                )}
+                <TabPanel>
+                  <SourceDownload setSource={setSource} />
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+            <SourceProfile profile={profile} setProfile={setProfile} />
+            <SendButton
+              source={source}
+              profile={profile}
+              addrArray={addrArray}
+              setAddrArray={setAddrArray}
+            />
 
-          <SourcePreview source={source} />
-          <Result addrArray={addrArray} setAddrArray={setAddrArray} />
+            <SourcePreview source={source} />
+            <Result addrArray={addrArray} setAddrArray={setAddrArray} />
 
-          <ResultOutput addrArray={addrArray} />
-        </Container>
-      </Center>{' '}
-    </main>
+            <ResultOutput addrArray={addrArray} />
+          </Container>
+        </Center>{' '}
+      </main>
+      <Footer />
+    </>
   );
 }

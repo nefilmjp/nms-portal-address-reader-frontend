@@ -6,6 +6,7 @@
   z-index: 1;
   width: min(32px, calc((100vw - 32px) / 12));
   height: min(32px, calc((100vw - 32px) / 12));
+  transition: all var(--chakra-transition-duration-normal);
   background-color: #000;
   color: #fff;
   font-family: $ff-nms-glyphs;
@@ -24,7 +25,7 @@
     text-shadow: 0 0 4px #000, 0 0 2px #000;
   }
 
-  .editor & {
+  &.isPopover {
     width: 32px;
     height: 32px;
     font-size: 32px;
