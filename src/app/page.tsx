@@ -60,7 +60,7 @@ export default function Home() {
               <br />
               Testing is in progress.
               <br />
-              Don&#39;t use a lot of it in a short time.
+              Do not use it frequently within a short time.
             </Text>
             <Text mt='4'>
               Supported resolutions:

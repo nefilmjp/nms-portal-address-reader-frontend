@@ -1,3 +1,4 @@
+/* stylelint-disable media-query-no-invalid */
 @use '../functions' as *;
 @use '../variables' as *;
 
@@ -47,15 +48,15 @@
   }
 
   @if $max != 0 and $min != 0 {
-    @media screen and (min-width: $min) and (max-width: $max) {
+    @media screen and (width >= $min) and (width <= $max) {
       @content;
     }
   } @else if $max == 0 {
-    @media screen and (min-width: $min) {
+    @media screen and (width >= $min) {
       @content;
     }
   } @else if $min == 0 {
-    @media screen and (max-width: $max) {
+    @media screen and (width <= $max) {
       @content;
     }
   } @else {
