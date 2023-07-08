@@ -108,7 +108,6 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
         border='1px'
         borderColor='blue.800'
         bgColor='blue.50'
-        pr='6.5rem'
         type='text'
         placeholder='Enter the image URL'
         isDisabled={isBusy}
