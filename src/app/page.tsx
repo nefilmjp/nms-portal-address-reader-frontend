@@ -11,8 +11,8 @@ import {
   TabPanel,
   Center,
 } from '@chakra-ui/react';
-import { useMemo, useState } from 'react';
-import { useUpdateEffect } from 'react-use';
+import { useState } from 'react';
+import { useMount, useUpdateEffect } from 'react-use';
 
 import { Result } from '@/components/Result/Result';
 import { ResultOutput } from '@/components/ResultOutput';
@@ -30,14 +30,17 @@ export default function Home() {
   const [profile, setProfile] = useState<string>('');
   const [addrArray, setAddrArray] = useState<AddressArray | undefined>();
 
-  const canPaste = useMemo(() => {
-    if (typeof navigator !== undefined) return false;
-    else return Boolean(navigator.clipboard.read);
-  }, []);
+  const [canPaste, setCanPaste] = useState<boolean>(false);
 
   useUpdateEffect(() => {
     setAddrArray(undefined);
   }, [source, profile]);
+
+  useMount(() => {
+    if (typeof navigator === undefined) return;
+    if (!navigator.clipboard.read) return;
+    setCanPaste(true);
+  });
 
   return (
     <main>
