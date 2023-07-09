@@ -5,7 +5,10 @@ import { server } from './server.mjs';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
 await server.register(cors, {
-  origin: /\.vercel\.app$/,
+  origin: [
+    'nmspar.vercel.app',
+    /^nms-portal-address-reader-frontend.*\.vercel\.app$/,
+  ],
 });
 
 export default async function handler(
