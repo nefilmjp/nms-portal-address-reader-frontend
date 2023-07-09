@@ -1,0 +1,28 @@
+name: 'Feature request'
+# title:
+description: Suggest an idea
+labels:
+  - enhancement
+# assignees:
+#   - nefilmjp
+body:
+  - type: checkboxes
+    id: pre-check
+    attributes:
+      label: Participation
+      options:
+        - label: I have confirmed that there are no duplicate issues.
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the request.
+    validations:
+      required: true
+  - type: checkboxes
+    id: will-pr
+    attributes:
+      label: Participation
+      options:
+        - label: I am willing to create a pull request for this issue.
