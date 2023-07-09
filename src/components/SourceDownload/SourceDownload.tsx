@@ -109,7 +109,7 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
         borderColor='blue.800'
         bgColor='blue.50'
         type='text'
-        placeholder='Enter the image URL'
+        placeholder='Enter the URL'
         isDisabled={isBusy}
         onChange={handleInput}
         value={value}

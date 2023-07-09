@@ -2,8 +2,6 @@
 
 import {
   Container,
-  Heading,
-  Text,
   Tabs,
   TabList,
   TabPanels,
@@ -15,14 +13,15 @@ import { useState } from 'react';
 import { useMount, useUpdateEffect } from 'react-use';
 
 import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
 import { Result } from '@/components/Result/Result';
 import { ResultOutput } from '@/components/ResultOutput';
+import { SelectProfile } from '@/components/SelectProfile';
 import { SendButton } from '@/components/SendButton';
 import { SourceClipboard } from '@/components/SourceClipboard';
 import { SourceDownload } from '@/components/SourceDownload';
 import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
-import { SourceProfile } from '@/components/SourceProfile';
 
 import type { AddressArray, Options } from '@/types';
 
@@ -49,25 +48,7 @@ export default function Home() {
       <main>
         <Center>
           <Container maxW='2xl' mt='6' mb='16'>
-            <Heading className='ff-geo' fontSize='2xl'>
-              <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
-              <span style={{ whiteSpace: 'nowrap' }}>
-                Portal Address Reader (Beta)
-              </span>
-            </Heading>
-            <Text mt='4'>
-              The portal address reader in the screenshot.
-              <br />
-              Testing is in progress.
-              <br />
-              Do not use it frequently within a short time.
-            </Text>
-            <Text mt='4'>
-              Supported resolutions:
-              <br />
-              1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-              3840x2160
-            </Text>
+            <Header />
 
             <Tabs mt='6' onChange={() => setSource(undefined)}>
               <TabList>
@@ -90,7 +71,8 @@ export default function Home() {
                 </TabPanel>
               </TabPanels>
             </Tabs>
-            <SourceProfile profile={profile} setProfile={setProfile} />
+
+            <SelectProfile profile={profile} setProfile={setProfile} />
             <SendButton
               options={options}
               source={source}

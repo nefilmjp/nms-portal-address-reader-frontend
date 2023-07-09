@@ -52,7 +52,7 @@ export const Footer = ({ ...props }: FooterProps) => {
                   justifyContent='space-between'
                 >
                   <Tooltip
-                    label='Send immediately upon image detection.'
+                    label='Send immediately upon screenshot detection.'
                     hasArrow
                     openDelay={500}
                   >

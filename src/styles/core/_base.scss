@@ -5,18 +5,8 @@
 ////
 
 body {
-  @include f;
-
   min-height: 100dvh;
-  color: $c-text;
   font-family: $ff;
-}
-
-input,
-textarea,
-keygen,
-select {
-  @include f;
 }
 
 img,
@@ -30,5 +20,4 @@ svg {
 
 main {
   position: relative;
-  // z-index: z('main');
 }

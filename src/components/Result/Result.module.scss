@@ -15,18 +15,14 @@
   letter-spacing: 0;
   line-height: 1;
   text-align: center;
-  text-shadow:
-    0 0 4px #fff,
-    0 0 2px #fff;
+  text-shadow: 0 0 4px #fff, 0 0 2px #fff;
   cursor: pointer;
   aspect-ratio: 1/1;
 
   .isSelected & {
     background-color: #fff;
     color: #000;
-    text-shadow:
-      0 0 4px #000,
-      0 0 2px #000;
+    text-shadow: 0 0 4px #000, 0 0 2px #000;
   }
 
   &.isPopover {

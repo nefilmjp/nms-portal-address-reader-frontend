@@ -1,3 +1,8 @@
+export const IMAGE_PROFILES = {
+  pc: 'PC/PS5',
+  ps4: 'PS4',
+};
+
 export const CROP_PROFILES = {
   1920: {
     1080: {

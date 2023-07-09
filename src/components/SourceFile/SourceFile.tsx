@@ -85,7 +85,7 @@ export const SourceFile = ({ ...props }: SourceFileProps) => {
               </Text>
             ) : (
               <Text align='center' fontSize='lg'>
-                Drop the screenshot here, or click to select a file.
+                Drop the file here, or click to select a file.
               </Text>
             )}
           </Center>
