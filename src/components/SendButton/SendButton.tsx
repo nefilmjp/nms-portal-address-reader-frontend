@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 
+import { API_URL } from '@/config';
+
 import type { AddressArray, ImageProfile, Options } from '@/types';
 
 interface SendButtonProps {
@@ -19,10 +21,6 @@ interface SendButtonProps {
   addrArray: AddressArray | undefined;
   setAddrArray: (addrArray: AddressArray | undefined) => void;
 }
-
-const apiUrl = process.env['NEXT_PUBLIC_API_URL']
-  ? process.env['NEXT_PUBLIC_API_URL']
-  : '';
 
 export const SendButton = ({ ...props }: SendButtonProps) => {
   const { options, source, profile, addrArray, setAddrArray } = props;
@@ -41,7 +39,7 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
     () => async (profile: ImageProfile, source: string) => {
       onOpen();
       setIsBusy(true);
-      await fetch(`${apiUrl}/api/parse`, {
+      await fetch(`${API_URL}/api/parse`, {
         method: 'POST',
         mode: 'cors',
         headers: {

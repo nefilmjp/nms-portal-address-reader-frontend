@@ -1,5 +1,9 @@
 import type { ImageProfile } from '@/types';
 
+export const API_URL = process.env['NEXT_PUBLIC_API_URL']
+  ? process.env['NEXT_PUBLIC_API_URL']
+  : '';
+
 export const IMAGE_PROFILES: Record<ImageProfile, string> = {
   pc: 'PC/PS5',
   ps4: 'PS4',

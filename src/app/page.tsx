@@ -14,6 +14,7 @@ import { useMount, useUpdateEffect } from 'react-use';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { Loading } from '@/components/Loading';
 import { Result } from '@/components/Result/Result';
 import { ResultOutput } from '@/components/ResultOutput';
 import { SelectProfile } from '@/components/SelectProfile';
@@ -22,10 +23,14 @@ import { SourceClipboard } from '@/components/SourceClipboard';
 import { SourceDownload } from '@/components/SourceDownload';
 import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
+import { Unavailable } from '@/components/Unavailable';
+import { API_URL } from '@/config';
 
 import type { AddressArray, ImageProfile, Options } from '@/types';
 
 export default function Home() {
+  const [isAvailable, setIsAvailable] = useState<boolean>();
+
   const [source, setSource] = useState<string | undefined>();
   const [profile, setProfile] = useState<ImageProfile | undefined>();
   const [addrArray, setAddrArray] = useState<AddressArray | undefined>();
@@ -37,11 +42,24 @@ export default function Home() {
     setAddrArray(undefined);
   }, [source, profile]);
 
-  useMount(() => {
+  useMount(async () => {
     if (typeof navigator === undefined) return;
     if (!navigator.clipboard.read) return;
     setCanPaste(true);
+
+    const result = await fetch(`${API_URL}/api/health`)
+      .then((res) => {
+        if (res.ok) return res.json();
+        return false;
+      })
+      .catch(() => false);
+
+    setIsAvailable(result);
   });
+
+  if (isAvailable === undefined) return <Loading />;
+
+  if (!isAvailable) return <Unavailable />;
 
   return (
     <>
