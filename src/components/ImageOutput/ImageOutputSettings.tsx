@@ -198,7 +198,9 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
           down.
         </Text>
         <Center mt='6'>
-          <Button onClick={() => setCanvasOp(defaultCanvasOp)}>Reset</Button>
+          <Button size='sm' onClick={() => setCanvasOp(defaultCanvasOp)}>
+            Reset
+          </Button>
         </Center>
       </Box>
     </Center>

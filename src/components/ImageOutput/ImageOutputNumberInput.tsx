@@ -35,7 +35,7 @@ export const ImageOutputNumberInput = ({
   return (
     <NumberInput
       size='xs'
-      w='5em'
+      w='4em'
       min={min}
       max={max}
       precision={precision}

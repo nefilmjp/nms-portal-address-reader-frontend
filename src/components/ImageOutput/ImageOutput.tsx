@@ -72,6 +72,7 @@ export const defaultCanvasOp: CanvasOptions = {
 export const ImageOutput = ({ ...props }: ImageOutputProps) => {
   const { addrArray } = props;
 
+  // const isOpen = useRef<boolean>(false);
   const [canCopy, setCanCopy] = useState<boolean>(false);
 
   // Options
@@ -193,13 +194,18 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
 
   // Repaint
   useUpdateEffect(() => {
+    // if (!isOpen.current) return;
     if (addrArray) draw(addrArray, canvasWidth, canvasHeight, canvasOp);
     else reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [addrArray, canvasOp]);
 
   return (
-    <Accordion mt='4' defaultIndex={[]} allowToggle allowMultiple={true}>
+    <Accordion
+      mt='4'
+      allowToggle
+      // onChange={(idx) => (isOpen.current = idx === -1 ? false : true)}
+    >
       <AccordionItem>
         <AccordionButton>
           <Box as='span' flex='1' textAlign='left'>
@@ -242,17 +248,22 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
               Download
             </Button>
           </HStack>
-        </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionButton>
-          <Box as='span' flex='1' textAlign='left'>
-            Image output settings
-          </Box>
-          <AccordionIcon />
-        </AccordionButton>
-        <AccordionPanel>
-          <ImageOutputSettings canvasOp={canvasOp} setCanvasOp={setCanvasOp} />
+          <Accordion mt='4' allowToggle borderWidth='1px' borderRadius='md'>
+            <AccordionItem border='none'>
+              <AccordionButton>
+                <Box as='span' flex='1' textAlign='left'>
+                  Settings
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel mt='2'>
+                <ImageOutputSettings
+                  canvasOp={canvasOp}
+                  setCanvasOp={setCanvasOp}
+                />
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

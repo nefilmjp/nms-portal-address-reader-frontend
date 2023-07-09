@@ -5,9 +5,7 @@ export const Header = () => {
     <>
       <Heading className='ff-geo' fontSize='2xl'>
         <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
-        <span style={{ whiteSpace: 'nowrap' }}>
-          Portal Address Reader (Beta)
-        </span>
+        <span style={{ whiteSpace: 'nowrap' }}>Portal Address Reader (RC)</span>
       </Heading>
       <Text mt='4'>
         The portal address reader in the screenshot.
