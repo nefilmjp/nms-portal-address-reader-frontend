@@ -3,15 +3,17 @@ import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
 import { IMAGE_PROFILES } from '@/config';
 
+import type { ImageProfile } from '@/types';
+
 interface SelectProfileProps {
-  profile: string;
-  setProfile: (profile: string) => void;
+  profile: ImageProfile | undefined;
+  setProfile: (profile: ImageProfile) => void;
 }
 
 export const SelectProfile = ({ ...props }: SelectProfileProps) => {
   const { profile, setProfile } = props;
 
-  const [storageProfile, setStorageProfile] = useLocalStorage<string>(
+  const [storageProfile, setStorageProfile] = useLocalStorage<ImageProfile>(
     'profile',
     'pc',
   );
@@ -23,7 +25,11 @@ export const SelectProfile = ({ ...props }: SelectProfileProps) => {
   return (
     <HStack mt='1' display='flex' justifyContent='center'>
       <Text>Image profile:</Text>
-      <RadioGroup defaultValue={profile} onChange={setProfile} value={profile}>
+      <RadioGroup
+        defaultValue={profile || ''}
+        onChange={setProfile}
+        value={profile || ''}
+      >
         <Stack spacing={5} direction='row'>
           {Object.entries(IMAGE_PROFILES).map(([value, label], idx) => (
             <Radio value={value} key={`image-profile-${idx}`}>

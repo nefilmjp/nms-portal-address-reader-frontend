@@ -23,11 +23,11 @@ import { SourceDownload } from '@/components/SourceDownload';
 import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
 
-import type { AddressArray, Options } from '@/types';
+import type { AddressArray, ImageProfile, Options } from '@/types';
 
 export default function Home() {
   const [source, setSource] = useState<string | undefined>();
-  const [profile, setProfile] = useState<string>('');
+  const [profile, setProfile] = useState<ImageProfile | undefined>();
   const [addrArray, setAddrArray] = useState<AddressArray | undefined>();
   const [options, setOptions] = useState<Options>({});
 
@@ -76,7 +76,7 @@ export default function Home() {
             <SendButton
               options={options}
               source={source}
-              profile={profile}
+              profile={profile || 'pc'}
               addrArray={addrArray}
               setAddrArray={setAddrArray}
             />

@@ -10,12 +10,12 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 
-import type { AddressArray, Options } from '@/types';
+import type { AddressArray, ImageProfile, Options } from '@/types';
 
 interface SendButtonProps {
   options: Options;
   source: string | undefined;
-  profile: string;
+  profile: ImageProfile;
   addrArray: AddressArray | undefined;
   setAddrArray: (addrArray: AddressArray | undefined) => void;
 }
@@ -38,7 +38,7 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
   }, [source]);
 
   const onClick = useMemo(
-    () => async (profile: string, source: string) => {
+    () => async (profile: ImageProfile, source: string) => {
       onOpen();
       setIsBusy(true);
       await fetch(`${apiUrl}/api/parse`, {

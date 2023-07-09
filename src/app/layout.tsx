@@ -12,7 +12,7 @@ const roboto = Roboto({
 
 export const metadata = {
   title: "No Man's Sky Portal Address Reader",
-  description: 'Read the portal address from the game screenshot.',
+  description: "The portal address reader in the screenshot for No Man's Sky.",
 };
 
 export default function RootLayout({

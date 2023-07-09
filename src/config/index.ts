@@ -1,4 +1,6 @@
-export const IMAGE_PROFILES = {
+import type { ImageProfile } from '@/types';
+
+export const IMAGE_PROFILES: Record<ImageProfile, string> = {
   pc: 'PC/PS5',
   ps4: 'PS4',
 };
