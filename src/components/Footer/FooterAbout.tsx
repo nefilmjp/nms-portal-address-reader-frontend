@@ -1,11 +1,8 @@
 import {
-  Box,
   Button,
   Icon,
   IconButton,
   Link,
-  List,
-  ListItem,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,7 +11,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  UnorderedList,
   useDisclosure,
 } from '@chakra-ui/react';
 import { FaExternalLinkAlt } from 'react-icons/fa';

@@ -2,7 +2,6 @@ import {
   Box,
   IconButton,
   HStack,
-  Link,
   Menu,
   MenuButton,
   MenuList,
@@ -12,7 +11,7 @@ import {
   Switch,
   Tooltip,
 } from '@chakra-ui/react';
-import { FaGear, FaGithub } from 'react-icons/fa6';
+import { FaGear } from 'react-icons/fa6';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
 import { Options } from '@/types';
