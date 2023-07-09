@@ -1,3 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type OnlyTypeKey<T extends Object, ExpectType> = {
+  [K in keyof T]: T[K] extends ExpectType ? K : never;
+}[keyof T];
+
 export type ImageProfile = 'pc' | 'ps4';
 
 export interface Options {

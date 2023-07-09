@@ -14,6 +14,7 @@ import { useMount, useUpdateEffect } from 'react-use';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { ImageOutput } from '@/components/ImageOutput';
 import { Loading } from '@/components/Loading';
 import { Result } from '@/components/Result/Result';
 import { ResultOutput } from '@/components/ResultOutput';
@@ -43,10 +44,14 @@ export default function Home() {
   }, [source, profile]);
 
   useMount(async () => {
-    if (typeof navigator === undefined) return;
-    if (!navigator.clipboard.read) return;
-    setCanPaste(true);
+    // Can browser use navigator.clipboard.write
+    if (
+      typeof navigator !== undefined &&
+      typeof navigator.clipboard.read === 'function'
+    )
+      setCanPaste(true);
 
+    // Health check
     const result = await fetch(`${API_URL}/api/health`)
       .then((res) => {
         if (res.ok) return res.json();
@@ -103,6 +108,7 @@ export default function Home() {
             <Result addrArray={addrArray} setAddrArray={setAddrArray} />
 
             <ResultOutput addrArray={addrArray} />
+            <ImageOutput addrArray={addrArray} />
           </Container>
         </Center>
       </main>
