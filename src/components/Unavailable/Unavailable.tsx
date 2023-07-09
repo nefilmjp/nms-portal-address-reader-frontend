@@ -6,8 +6,10 @@ import {
   Center,
   Container,
   Heading,
+  Icon,
   Link,
 } from '@chakra-ui/react';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 export const Unavailable = () => {
   return (
@@ -38,8 +40,20 @@ export const Unavailable = () => {
               <br />
               If this condition persists for over a day, please get in touch
               with{' '}
-              <Link href='https://twitter.com/nefilm_rc' isExternal={true}>
+              <Link
+                href='https://twitter.com/nefilm_rc'
+                isExternal={true}
+                color='blue.600'
+              >
                 @nefilm_rc
+                <Icon
+                  as={FaExternalLinkAlt}
+                  ml='0.2em'
+                  mr='0.2em'
+                  w='0.8em'
+                  h='0.8em'
+                  verticalAlign='baseline'
+                />
               </Link>
               .
             </AlertDescription>

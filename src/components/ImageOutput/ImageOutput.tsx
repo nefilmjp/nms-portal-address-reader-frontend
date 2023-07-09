@@ -209,7 +209,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
       <AccordionItem>
         <AccordionButton>
           <Box as='span' flex='1' textAlign='left'>
-            Image output
+            Image
           </Box>
           <AccordionIcon />
         </AccordionButton>

@@ -17,6 +17,8 @@ import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
 import { Options } from '@/types';
 
+import { FooterAbout } from './FooterAbout';
+
 interface FooterProps {
   options: Options;
   setOptions: (options: Options) => void;
@@ -74,12 +76,13 @@ export const Footer = ({ ...props }: FooterProps) => {
               </MenuItem>
             </MenuList>
           </Menu>
-          <Link
+          <FooterAbout />
+          {/* <Link
             href='https://github.com/nefilmjp/nms-portal-address-reader-frontend'
             isExternal={true}
           >
             <IconButton aria-label='GitHub' icon={<FaGithub />} />
-          </Link>
+          </Link> */}
         </HStack>
       </Box>
     </footer>
