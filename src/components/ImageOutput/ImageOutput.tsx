@@ -53,17 +53,17 @@ export const defaultCanvasOp: CanvasOptions = {
   bgRed: 0,
   bgGreen: 0,
   bgBlue: 0,
-  bgOpacity: 1,
+  bgOpacity: 100,
   textSize: 48,
   textRed: 255,
   textGreen: 255,
   textBlue: 255,
-  textOpacity: 1,
+  textOpacity: 100,
   shadow: true,
   shadowRed: 255,
   shadowGreen: 255,
   shadowBlue: 255,
-  shadowOpacity: 1,
+  shadowOpacity: 100,
   shadowOffsetX: 0,
   shadowOffsetY: 0,
   shadowBlur: 5,
@@ -166,12 +166,16 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
 
         // Background
         if (op.bg) {
-          ctx.fillStyle = `rgba(${op.bgRed}, ${op.bgGreen}, ${op.bgBlue}, ${op.bgOpacity})`;
+          ctx.fillStyle = `rgba(${op.bgRed}, ${op.bgGreen}, ${op.bgBlue}, ${
+            op.bgOpacity * 0.01
+          })`;
           ctx.fillRect(0, 0, canvasWidth, canvasHeight);
         }
 
         if (op.shadow) {
-          ctx.shadowColor = `rgba(${op.shadowRed}, ${op.shadowGreen}, ${op.shadowBlue}, ${op.shadowOpacity})`;
+          ctx.shadowColor = `rgba(${op.shadowRed}, ${op.shadowGreen}, ${
+            op.shadowBlue
+          }, ${op.shadowOpacity * 0.01})`;
           ctx.shadowOffsetX = op.shadowOffsetX;
           ctx.shadowOffsetY = op.shadowOffsetY;
           ctx.shadowBlur = op.shadowBlur;
@@ -179,7 +183,9 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
 
         ctx.font = `400 ${op.textSize}px NMSGlyphsMono`;
         ctx.textBaseline = 'top';
-        ctx.fillStyle = `rgba(${op.textRed}, ${op.textGreen}, ${op.textBlue}, ${op.textOpacity})`;
+        ctx.fillStyle = `rgba(${op.textRed}, ${op.textGreen}, ${op.textBlue}, ${
+          op.textOpacity * 0.01
+        })`;
         addrArray.forEach((dec, idx) => {
           ctx.fillText(
             dec.toString(16).toUpperCase(),
@@ -218,6 +224,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
           <HStack mt='4' spacing='4' justifyContent='center'>
             {canCopy && (
               <Button
+                size='lg'
                 isDisabled={!addrArray}
                 colorScheme='blue'
                 onClick={async () => {
@@ -234,6 +241,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
               </Button>
             )}
             <Button
+              size='lg'
               isDisabled={!addrArray}
               colorScheme='blue'
               onClick={() => {
