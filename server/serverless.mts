@@ -1,6 +1,6 @@
 import cors from '@fastify/cors';
 
-import { server } from './server.mjs';
+import { server } from './libs/server.mjs';
 
 import type { IncomingMessage, ServerResponse } from 'node:http';
 

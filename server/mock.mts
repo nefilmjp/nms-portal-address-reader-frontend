@@ -1,7 +1,7 @@
 import cors from '@fastify/cors';
 import * as dotenv from 'dotenv';
 
-import { server } from './server.mjs';
+import { server } from './libs/server.mjs';
 
 dotenv.config();
 
