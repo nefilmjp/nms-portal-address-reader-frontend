@@ -14,7 +14,7 @@ export const SourcePreview = ({ ...props }: SourcePreviewProps) => {
       ) : (
         <Center
           border='1px'
-          borderColor='gray'
+          borderBottom='none'
           aspectRatio='384 / 32'
           width='100%'
           maxW='384px'

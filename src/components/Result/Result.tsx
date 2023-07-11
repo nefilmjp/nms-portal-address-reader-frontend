@@ -30,10 +30,8 @@ export const Result = ({ ...props }: ResultProps) => {
         ) : (
           <Center
             border='1px'
-            borderColor='gray'
             aspectRatio='384 / 32'
             // aspectRatio='384 / 55'
-            borderTop='none'
             width='100%'
             maxW='384px'
           >
