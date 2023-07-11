@@ -16,7 +16,7 @@ export const endpoints: FastifyPluginCallback = (fastify, _options, done) => {
     async () =>
       await extendedFetch(`${apiUrl}/api/health`, {
         method: 'GET',
-        timeout: 1000,
+        timeout: 1500,
         maxRetryCount: 0,
       })
         .then(() => true)
@@ -27,7 +27,7 @@ export const endpoints: FastifyPluginCallback = (fastify, _options, done) => {
     const body = JSON.stringify(req.body);
     const result = await extendedFetch(`${apiUrl}/api/parse`, {
       method: 'POST',
-      timeout: 5000,
+      timeout: 8000,
       maxRetryCount: 0,
       headers: {
         'Content-Type': 'application/json',

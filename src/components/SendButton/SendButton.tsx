@@ -69,7 +69,7 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
           setAddrArray(undefined);
           toast({
             title: 'The server is not responding.',
-            description: 'Network error or server is dead.',
+            description: 'Network error or server is offline.',
             status: 'error',
             duration: 10000,
             isClosable: true,
