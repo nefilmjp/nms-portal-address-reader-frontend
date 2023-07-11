@@ -88,7 +88,6 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
         <Center mt='6'>
           <Button
             size='lg'
-            colorScheme='blue'
             isDisabled={!source || isBusy || Boolean(addrArray)}
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             onClick={() => onClick(profile, source!)}

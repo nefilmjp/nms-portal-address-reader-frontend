@@ -34,7 +34,7 @@ export const FooterAbout = () => {
               <Link
                 href='https://twitter.com/nefilm_rc'
                 isExternal={true}
-                color='blue.600'
+                color='blue.400'
               >
                 @nefilm_rc
                 <Icon
@@ -50,11 +50,11 @@ export const FooterAbout = () => {
             </Text>
             <Text mt='4'>Contributing</Text>
             <Text ml='4'>
-              Pull Requests are accepted on{' '}
+              Reports, requests, and PRs are accepted on{' '}
               <Link
                 href='https://github.com/nefilmjp/nms-portal-address-reader-frontend'
                 isExternal={true}
-                color='blue.600'
+                color='blue.400'
               >
                 GitHub
                 <Icon
@@ -74,7 +74,7 @@ export const FooterAbout = () => {
               <Link
                 href='https://disboard.org/ja/server/735105471471419463'
                 isExternal={true}
-                color='blue.600'
+                color='blue.400'
               >
                 Disboard
                 <Icon
@@ -91,7 +91,7 @@ export const FooterAbout = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='blue' onClick={onClose}>
+            <Button variant='outline' onClick={onClose}>
               Close
             </Button>
           </ModalFooter>

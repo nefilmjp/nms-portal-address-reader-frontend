@@ -13,7 +13,7 @@ export const ResultOutput = ({ ...props }: ResultOutputProps) => {
   const { addrArray } = props;
 
   const dec = useMemo(
-    () => (addrArray ? addrArrayToDec(addrArray) : undefined),
+    () => (addrArray ? addrArrayToDec(addrArray, ',', 1) : undefined),
     [addrArray],
   );
 

@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { useMount, useUpdateEffect } from 'react-use';
 
 import { Footer } from '@/components/Footer';
+import { FormattedOutput } from '@/components/FormattedOutput';
 import { Header } from '@/components/Header';
 import { ImageOutput } from '@/components/ImageOutput';
 import { Loading } from '@/components/Loading';
@@ -108,6 +109,7 @@ export default function Home() {
             <Result addrArray={addrArray} setAddrArray={setAddrArray} />
 
             <ResultOutput addrArray={addrArray} />
+            <FormattedOutput options={options} addrArray={addrArray} />
             <ImageOutput addrArray={addrArray} />
           </Container>
         </Center>

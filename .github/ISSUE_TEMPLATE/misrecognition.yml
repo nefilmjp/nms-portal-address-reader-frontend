@@ -25,9 +25,9 @@ body:
     validations:
       required: true
   - type: dropdown
-    id: hardware
+    id: device
     attributes:
-      label: Hardware
+      label: Device
       multiple: false
       options:
         - Windows

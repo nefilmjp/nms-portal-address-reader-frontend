@@ -14,7 +14,12 @@ export const addrArrayToHex = (arr: AddressArray): string =>
 /**
  * Conver portal address to string (decimal CSV)
  * @param arr - Int array of portal address
+ * @param delimiter - Delimiter
+ * @param trim - Trim
  * @returns 12-elements decimal array as string
  */
-export const addrArrayToDec = (arr: AddressArray): string =>
-  arr.map((num) => (num + 1).toString(10)).join(',');
+export const addrArrayToDec = (
+  arr: AddressArray,
+  delimiter: string,
+  trim: number,
+): string => arr.map((num) => (num + trim).toString(10)).join(delimiter);

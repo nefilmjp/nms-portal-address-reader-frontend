@@ -16,7 +16,6 @@ export const SourceClipboard = ({ ...props }: SourceClipboardProps) => {
       <Center>
         <Button
           size='lg'
-          colorScheme='blue'
           onClick={async () => {
             const clipboardItems = await navigator.clipboard.read();
             const pastedImage = clipboardItems.find(

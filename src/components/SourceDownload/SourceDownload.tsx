@@ -106,8 +106,6 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
       <Input
         size='lg'
         border='1px'
-        borderColor='blue.800'
-        bgColor='blue.50'
         type='text'
         placeholder='Enter the URL'
         isDisabled={isBusy}
@@ -116,7 +114,7 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
       />
       <HStack mt='4' spacing='4' justifyContent='center'>
         <Button
-          colorScheme='blackAlpha'
+          variant='outline'
           isDisabled={!value || isBusy}
           onClick={() => {
             setValue('');
@@ -126,7 +124,6 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
           Reset
         </Button>
         <Button
-          colorScheme='blue'
           isDisabled={!downloadUrl || isBusy}
           onClick={() => {
             if (downloadUrl) handleDownload(downloadUrl);

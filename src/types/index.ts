@@ -6,6 +6,12 @@ export type OnlyTypeKey<T extends Object, ExpectType> = {
 export type ImageProfile = 'pc' | 'ps4';
 
 export interface Options {
+  /** Optional output */
+  formattedOutput?: boolean;
+  format?: 'hexU' | 'hexL' | 'dec1' | 'dec0' | undefined;
+  prefix?: string;
+  suffix?: string;
+  delimiter?: string;
   /** UI Option */
   sendImmediately?: boolean;
   /** API Option */

@@ -238,7 +238,11 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
           You can copy or download the image in the original size.
         </Alert>
         <Center mt='4'>
-          <Button size='sm' onClick={() => setCanvasOp(defaultCanvasOp)}>
+          <Button
+            size='sm'
+            variant='outline'
+            onClick={() => setCanvasOp(defaultCanvasOp)}
+          >
             Reset
           </Button>
         </Center>

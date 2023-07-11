@@ -43,7 +43,7 @@ export const Unavailable = () => {
               <Link
                 href='https://twitter.com/nefilm_rc'
                 isExternal={true}
-                color='blue.600'
+                color='blue.400'
               >
                 @nefilm_rc
                 <Icon

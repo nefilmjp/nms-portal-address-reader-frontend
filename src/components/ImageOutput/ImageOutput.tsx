@@ -226,7 +226,6 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
               <Button
                 size='lg'
                 isDisabled={!addrArray}
-                colorScheme='blue'
                 onClick={async () => {
                   const [canvas] = getCanvas();
                   if (!canvas) return;
@@ -243,7 +242,6 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
             <Button
               size='lg'
               isDisabled={!addrArray}
-              colorScheme='blue'
               onClick={() => {
                 const anchor = document.createElement('a');
                 const [canvas] = getCanvas();

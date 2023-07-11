@@ -1,22 +1,11 @@
-import {
-  Box,
-  IconButton,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  FormControl,
-  FormLabel,
-  Switch,
-  Tooltip,
-} from '@chakra-ui/react';
-import { FaGear } from 'react-icons/fa6';
+import { Box, HStack } from '@chakra-ui/react';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
 import { Options } from '@/types';
 
 import { FooterAbout } from './FooterAbout';
+import { FooterColorSwitch } from './FooterColorSwitch';
+import { SettingsDrawer } from '../SettingsDrawer';
 
 interface FooterProps {
   options: Options;
@@ -39,49 +28,9 @@ export const Footer = ({ ...props }: FooterProps) => {
     <footer>
       <Box pos='absolute' p='2' bottom='0' right='0' left='0'>
         <HStack justifyContent='flex-end'>
-          <Menu computePositionOnMount={true} closeOnSelect={false}>
-            <MenuButton
-              as={IconButton}
-              aria-label='Options'
-              icon={<FaGear />}
-            />
-            <MenuList>
-              <MenuItem>
-                <FormControl
-                  display='flex'
-                  alignItems='center'
-                  justifyContent='space-between'
-                >
-                  <Tooltip
-                    label='Send immediately upon screenshot detection.'
-                    hasArrow
-                    openDelay={500}
-                  >
-                    <FormLabel htmlFor='options-send-immediately' mb='0'>
-                      Send immediately
-                    </FormLabel>
-                  </Tooltip>
-                  <Switch
-                    id='options-send-immediately'
-                    isChecked={options.sendImmediately || false}
-                    onChange={(event) => {
-                      setOptions({
-                        ...options,
-                        sendImmediately: event.target.checked,
-                      });
-                    }}
-                  />
-                </FormControl>
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          <FooterColorSwitch />
+          <SettingsDrawer options={options} setOptions={setOptions} />
           <FooterAbout />
-          {/* <Link
-            href='https://github.com/nefilmjp/nms-portal-address-reader-frontend'
-            isExternal={true}
-          >
-            <IconButton aria-label='GitHub' icon={<FaGithub />} />
-          </Link> */}
         </HStack>
       </Box>
     </footer>
