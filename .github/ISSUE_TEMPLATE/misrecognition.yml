@@ -53,4 +53,5 @@ body:
     attributes:
       value: |
         The cropped address can be copied or downloaded from the context menu and pasted or dropped into the textarea.
+
         ![image](https://github.com/nefilmjp/nms-portal-address-reader-frontend/assets/136662366/012eff44-51f8-433f-99bb-78e24941706a)
