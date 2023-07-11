@@ -18,13 +18,13 @@ import { Header } from '@/components/Header';
 import { ImageOutput } from '@/components/ImageOutput';
 import { Loading } from '@/components/Loading';
 import { Result } from '@/components/Result/Result';
-import { ResultOutput } from '@/components/ResultOutput';
 import { SelectProfile } from '@/components/SelectProfile';
 import { SendButton } from '@/components/SendButton';
 import { SourceClipboard } from '@/components/SourceClipboard';
 import { SourceDownload } from '@/components/SourceDownload';
 import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
+import { TextOutput } from '@/components/TextOutput';
 import { Unavailable } from '@/components/Unavailable';
 import { API_URL } from '@/config';
 
@@ -108,7 +108,7 @@ export default function Home() {
             <SourcePreview source={source} />
             <Result addrArray={addrArray} setAddrArray={setAddrArray} />
 
-            <ResultOutput addrArray={addrArray} />
+            <TextOutput addrArray={addrArray} />
             <FormattedOutput options={options} addrArray={addrArray} />
             <ImageOutput addrArray={addrArray} />
           </Container>

@@ -9,7 +9,7 @@ interface ResultOutputProps {
   addrArray: AddressArray | undefined;
 }
 
-export const ResultOutput = ({ ...props }: ResultOutputProps) => {
+export const TextOutput = ({ ...props }: ResultOutputProps) => {
   const { addrArray } = props;
 
   const dec = useMemo(

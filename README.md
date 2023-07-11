@@ -4,10 +4,10 @@ Available at [https://nmspar.vercell.app](https://nmspar.vercell.app)
 
 ## Contributing
 
-- Pull Requests are accepted
 - Bug report
     - Issues -> Bug report
 - Misrecognition report
     - Issues -> Misrecognition report
 - Feature request
     - Discussion -> Ideas
+- Pull Requests are accepted
