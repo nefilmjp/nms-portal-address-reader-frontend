@@ -1,0 +1,56 @@
+name: 'Misrecognition report'
+# title:
+description: Misrecognition report
+labels:
+  - misrecognition
+# assignees:
+#   - nefilmjp
+body:
+  - type: dropdown
+    id: source
+    attributes:
+      label: Source
+      multiple: false
+      options:
+        - Output by client directly (e.g., the file saved when pressing F12 in Win+Steam)
+        - Output by game console directly (e.g., screenshot on Twitter posted by PS4/PS5)
+        - Other/Unknown
+    validations:
+      required: true
+  - type: input
+    id: resolution
+    attributes:
+      label: Source resolution
+      placeholder: 1920x1080
+    validations:
+      required: true
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Hardware
+      multiple: false
+      options:
+        - Windows
+        - Mac
+        - PlayStation 5
+        - PlayStation 4
+        - Xbox Series X
+        - Xbox Series S
+        - Xbox One X
+        - Xbox One
+        - Switch
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Cropped address, URL used, and any other information.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        The cropped address can be copied or downloaded from the context menu and pasted or dropped into the textarea.
+        ![image](https://github.com/nefilmjp/nms-portal-address-reader-frontend/assets/136662366/012eff44-51f8-433f-99bb-78e24941706a)

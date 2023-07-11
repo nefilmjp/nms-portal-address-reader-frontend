@@ -33,22 +33,11 @@ body:
         - Other
     validations:
       required: true
-  - type: input
-    id: env-detail
+  - type: textarea
+    id: environment
     attributes:
       label: More information about the environment
-      placeholder: Version, device, resolution, etc...
-  - type: checkboxes
-    id: category
-    attributes:
-      label: Category
-      description: You may select more than one.
-      options:
-        - label: Portal glyph detection
-        - label: UI function
-        - label: Visual appearance
-        - label: Text/Sentence
-        - label: Other/Unknown
+      description: Browser version, device, resolution, etc...
   - type: textarea
     id: description
     attributes:
