@@ -1,27 +1,29 @@
 import { Box, HStack } from '@chakra-ui/react';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-import { Options } from '@/types';
+import { DEFAULT_SETTINGS } from '@/config';
 
 import { FooterAbout } from './FooterAbout';
 import { FooterColorSwitch } from './FooterColorSwitch';
 import { FooterKofi } from './FooterKofi';
 import { SettingsDrawer } from '../SettingsDrawer';
 
+import type { AppSettings } from '@/types';
+
 interface FooterProps {
-  options: Options;
-  setOptions: (options: Options) => void;
+  options: AppSettings;
+  setOptions: (options: AppSettings) => void;
 }
 
 export const Footer = ({ ...props }: FooterProps) => {
   const { options, setOptions } = props;
 
-  const [storageOptions, setStorageOptions] = useLocalStorage<Options>(
+  const [storageOptions, setStorageOptions] = useLocalStorage<AppSettings>(
     'options',
-    {},
+    DEFAULT_SETTINGS,
   );
 
-  useMount(() => setOptions(storageOptions || {}));
+  useMount(() => setOptions(storageOptions || DEFAULT_SETTINGS));
 
   useUpdateEffect(() => setStorageOptions(options), [options]);
 

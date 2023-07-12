@@ -18,7 +18,6 @@ import { Header } from '@/components/Header';
 import { ImageOutput } from '@/components/ImageOutput';
 import { Loading } from '@/components/Loading';
 import { Result } from '@/components/Result/Result';
-import { SelectProfile } from '@/components/SelectProfile';
 import { SendButton } from '@/components/SendButton';
 import { SourceClipboard } from '@/components/SourceClipboard';
 import { SourceDownload } from '@/components/SourceDownload';
@@ -26,23 +25,22 @@ import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
 import { TextOutput } from '@/components/TextOutput';
 import { Unavailable } from '@/components/Unavailable';
-import { API_URL } from '@/config';
+import { API_URL, DEFAULT_SETTINGS } from '@/config';
 
-import type { AddressArray, ImageProfile, Options } from '@/types';
+import type { AddressArray, AppSettings } from '@/types';
 
 export default function Home() {
   const [isAvailable, setIsAvailable] = useState<boolean>();
 
   const [source, setSource] = useState<string | undefined>();
-  const [profile, setProfile] = useState<ImageProfile | undefined>();
   const [addrArray, setAddrArray] = useState<AddressArray | undefined>();
-  const [options, setOptions] = useState<Options>({});
+  const [options, setOptions] = useState<AppSettings>(DEFAULT_SETTINGS);
 
   const [canPaste, setCanPaste] = useState<boolean>(false);
 
   useUpdateEffect(() => {
     setAddrArray(undefined);
-  }, [source, profile]);
+  }, [source, options.profile]);
 
   useMount(async () => {
     // Can browser use navigator.clipboard.write
@@ -96,11 +94,9 @@ export default function Home() {
               </TabPanels>
             </Tabs>
 
-            <SelectProfile profile={profile} setProfile={setProfile} />
             <SendButton
               options={options}
               source={source}
-              profile={profile || 'pc'}
               addrArray={addrArray}
               setAddrArray={setAddrArray}
             />

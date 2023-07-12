@@ -22,11 +22,13 @@ import { useRef } from 'react';
 import { FaGear } from 'react-icons/fa6';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-import { Options } from '@/types';
+import { DEFAULT_SETTINGS } from '@/config';
+
+import type { AppSettings } from '@/types';
 
 interface SettingsDrawerProps {
-  options: Options;
-  setOptions: (options: Options) => void;
+  options: AppSettings;
+  setOptions: (options: AppSettings) => void;
 }
 
 export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
@@ -35,12 +37,12 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef(null);
 
-  const [storageOptions, setStorageOptions] = useLocalStorage<Options>(
+  const [storageOptions, setStorageOptions] = useLocalStorage<AppSettings>(
     'options',
-    {},
+    DEFAULT_SETTINGS,
   );
 
-  useMount(() => setOptions(storageOptions || {}));
+  useMount(() => setOptions(storageOptions || DEFAULT_SETTINGS));
 
   useUpdateEffect(() => setStorageOptions(options), [options]);
 
@@ -102,7 +104,7 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
                   onChange={(event) => {
                     setOptions({
                       ...options,
-                      format: event.target.value as Options['format'],
+                      format: event.target.value as AppSettings['format'],
                     });
                   }}
                 >
@@ -186,6 +188,32 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
               alignItems='center'
               justifyContent='space-between'
             >
+              <FormLabel htmlFor='options-profile' mb='0'>
+                Recognition profile
+              </FormLabel>
+              <Select
+                w='7em'
+                id='options-profile'
+                value={options.profile || 'pc'}
+                onChange={(event) => {
+                  setOptions({
+                    ...options,
+                    profile:
+                      (event.target.value as AppSettings['profile']) || 'pc',
+                  });
+                }}
+              >
+                <option value='pc'>Normal</option>
+                <option value='ps4'>PS4</option>
+              </Select>
+            </FormControl>
+            <Divider mt='4' />
+            <FormControl
+              mt='4'
+              display='flex'
+              alignItems='center'
+              justifyContent='space-between'
+            >
               <Tooltip
                 label='Send immediately upon screenshot detection.'
                 hasArrow
@@ -209,7 +237,10 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant='outline' onClick={() => setOptions({})}>
+            <Button
+              variant='outline'
+              onClick={() => setOptions(DEFAULT_SETTINGS)}
+            >
               Reset
             </Button>
             <Button ml='4' onClick={onClose}>

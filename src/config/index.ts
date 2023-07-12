@@ -1,10 +1,14 @@
-import type { ImageProfile } from '@/types';
+import type { RecognitionProfile, AppSettings } from '@/types';
 
 export const API_URL = process.env['NEXT_PUBLIC_API_URL']
   ? process.env['NEXT_PUBLIC_API_URL']
   : '';
 
-export const IMAGE_PROFILES: Record<ImageProfile, string> = {
+export const DEFAULT_SETTINGS: AppSettings = {
+  profile: 'pc',
+};
+
+export const IMAGE_PROFILES: Record<RecognitionProfile, string> = {
   pc: 'Normal',
   ps4: 'PS4',
 };

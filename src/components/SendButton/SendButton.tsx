@@ -12,18 +12,17 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { API_URL } from '@/config';
 
-import type { AddressArray, ImageProfile, Options } from '@/types';
+import type { AddressArray, AppSettings, RecognitionProfile } from '@/types';
 
 interface SendButtonProps {
-  options: Options;
+  options: AppSettings;
   source: string | undefined;
-  profile: ImageProfile;
   addrArray: AddressArray | undefined;
   setAddrArray: (addrArray: AddressArray | undefined) => void;
 }
 
 export const SendButton = ({ ...props }: SendButtonProps) => {
-  const { options, source, profile, addrArray, setAddrArray } = props;
+  const { options, source, addrArray, setAddrArray } = props;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isBusy, setIsBusy] = useState<boolean>(false);
@@ -31,12 +30,13 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
   const toast = useToast();
 
   useEffect(() => {
-    if (options.sendImmediately && source) onClick(profile, source);
+    if (options.sendImmediately && source)
+      onClick(options.profile || 'pc', source);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [source]);
 
   const onClick = useMemo(
-    () => async (profile: ImageProfile, source: string) => {
+    () => async (profile: RecognitionProfile, source: string) => {
       onOpen();
       setIsBusy(true);
       await fetch(`${API_URL}/api/parse`, {
@@ -90,7 +90,7 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
             size='lg'
             isDisabled={!source || isBusy || Boolean(addrArray)}
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            onClick={() => onClick(profile, source!)}
+            onClick={() => onClick(options.profile || 'pc', source!)}
           >
             Send
           </Button>

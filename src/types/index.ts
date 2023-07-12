@@ -3,9 +3,9 @@ export type OnlyTypeKey<T extends Object, ExpectType> = {
   [K in keyof T]: T[K] extends ExpectType ? K : never;
 }[keyof T];
 
-export type ImageProfile = 'pc' | 'ps4';
+export type RecognitionProfile = 'pc' | 'ps4';
 
-export interface Options {
+export interface AppSettings {
   /** Optional output */
   formattedOutput?: boolean;
   format?: 'hexU' | 'hexL' | 'dec1' | 'dec0' | undefined;
@@ -14,6 +14,8 @@ export interface Options {
   delimiter?: string;
   /** UI Option */
   sendImmediately?: boolean;
+  /** API Option */
+  profile: RecognitionProfile;
   /** API Option */
   claheValueThreshold?: number;
   /** API Option */

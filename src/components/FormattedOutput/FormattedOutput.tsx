@@ -3,10 +3,10 @@ import { useMemo } from 'react';
 
 import { addrArrayToHex } from '@/utils/converter';
 
-import type { AddressArray, Options } from '@/types';
+import type { AddressArray, AppSettings } from '@/types';
 
 interface FormattedOutputProps {
-  options: Options;
+  options: AppSettings;
   addrArray: AddressArray | undefined;
 }
 
