@@ -46,12 +46,14 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
 
   return (
     <>
-      <IconButton
-        aria-label='About'
-        icon={<FaGear />}
-        ref={btnRef}
-        onClick={onOpen}
-      />
+      <Tooltip label='Settings' hasArrow>
+        <IconButton
+          aria-label='About'
+          icon={<FaGear />}
+          ref={btnRef}
+          onClick={onOpen}
+        />
+      </Tooltip>
       <Drawer
         isOpen={isOpen}
         placement='right'

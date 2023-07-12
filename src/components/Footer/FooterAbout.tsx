@@ -13,6 +13,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  Tooltip,
   UnorderedList,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -23,7 +24,13 @@ export const FooterAbout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <IconButton aria-label='About' icon={<FaCircleInfo />} onClick={onOpen} />
+      <Tooltip label='About this app' hasArrow>
+        <IconButton
+          aria-label='About'
+          icon={<FaCircleInfo />}
+          onClick={onOpen}
+        />
+      </Tooltip>
 
       <Modal
         isOpen={isOpen}
@@ -36,8 +43,8 @@ export const FooterAbout = () => {
           <ModalHeader>About</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Spec</Text>
-            <UnorderedList>
+            <Text>Spec and limitations</Text>
+            <UnorderedList mt='1'>
               <ListItem ml='4'>
                 Supported formats: <Code>JPEG</Code> , <Code>PNG</Code>
               </ListItem>
@@ -78,7 +85,7 @@ export const FooterAbout = () => {
               </ListItem>
             </UnorderedList>
             <Text mt='4'>Contributing</Text>
-            <Text ml='4'>
+            <Text mt='1' ml='4'>
               Reports, requests, and PRs are accepted on{' '}
               <Link
                 href='https://github.com/nefilmjp/nms-portal-address-reader-frontend#readme'
@@ -97,7 +104,7 @@ export const FooterAbout = () => {
               </Link>
             </Text>
             <Text mt='4'>Author</Text>
-            <Text ml='4'>
+            <Text mt='1' ml='4'>
               Nefilm (
               <Link
                 href='https://twitter.com/nefilm_rc'
@@ -117,7 +124,7 @@ export const FooterAbout = () => {
               )
             </Text>
             <Text mt='4'>Special thanks</Text>
-            <Text ml='4'>
+            <Text mt='1' ml='4'>
               No Man&#39;s Sky Discord Server [PC/CS] Members (Japanese
               community,{' '}
               <Link

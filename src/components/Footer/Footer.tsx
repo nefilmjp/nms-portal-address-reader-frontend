@@ -5,6 +5,7 @@ import { Options } from '@/types';
 
 import { FooterAbout } from './FooterAbout';
 import { FooterColorSwitch } from './FooterColorSwitch';
+import { FooterKofi } from './FooterKofi';
 import { SettingsDrawer } from '../SettingsDrawer';
 
 interface FooterProps {
@@ -31,6 +32,7 @@ export const Footer = ({ ...props }: FooterProps) => {
           <FooterColorSwitch />
           <SettingsDrawer options={options} setOptions={setOptions} />
           <FooterAbout />
+          <FooterKofi />
         </HStack>
       </Box>
     </footer>
