@@ -1,6 +1,6 @@
 # No Man's Sky Portal Address Reader
 
-Recognize portal glyphs in the screenshot and convert them to hex, decimal, and image.
+Read portal glyphs in the screenshot and convert them to hex, decimal, and image.
 
 Available at [https://nmspar.vercell.app](https://nmspar.vercell.app)
 

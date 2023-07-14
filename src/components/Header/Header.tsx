@@ -11,7 +11,7 @@ export const Header = () => {
           Portal Address Reader
         </Text>
       </Heading>
-      <Text mt='4'>Recognize portal glyphs in the screenshot.</Text>
+      <Text mt='4'>Read portal glyphs in the screenshot.</Text>
       <Box mt='4' borderRadius='lg' borderWidth='1px' p='3' fontSize='sm'>
         <Text ml='1em' textIndent='-1em'>
           Supported formats:

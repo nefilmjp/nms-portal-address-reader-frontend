@@ -58,17 +58,17 @@ export const FooterAbout = () => {
                     <Code>3840x2160</Code>
                   </ListItem>
                   <ListItem>
-                    Currently, other sizes will reject due to limitations of
-                    accuracy
+                    Currently, due to the limitation of accuracy, other sizes
+                    will be rejected
                   </ListItem>
                 </UnorderedList>
               </ListItem>
               <ListItem ml='4'>
-                Only cropped glyphs is sent to the server
+                Send only the cropped glyphs to the server
               </ListItem>
               <ListItem ml='4'>
-                When downloading an image from Twitter, download the original
-                size automatically
+                When downloading a screenshot from Twitter, the original size is
+                downloaded automatically
                 <UnorderedList>
                   <ListItem ml='4'>
                     The app sets <Code>name</Code> parameter to{' '}
@@ -81,7 +81,7 @@ export const FooterAbout = () => {
                 Some browsers have limited clipboard functionality
               </ListItem>
               <ListItem ml='4'>
-                Some sites/services may reject downloads by the app
+                Some sites/services may reject downloads of app
               </ListItem>
             </UnorderedList>
             <Text mt='4'>Contributing</Text>
