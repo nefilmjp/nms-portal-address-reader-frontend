@@ -65,7 +65,7 @@ export const FooterAbout = () => {
               </ListItem>
               <ListItem ml='4'>
                 To read from a PS4 or Switch screenshot, change the recognition
-                profile in the settings.
+                profile to <Code>PS4, Switch</Code> in the settings.
               </ListItem>
               <ListItem ml='4'>
                 Send only the cropped glyphs to the server

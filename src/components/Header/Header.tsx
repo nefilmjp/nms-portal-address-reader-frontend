@@ -1,4 +1,11 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Code,
+  Heading,
+  ListItem,
+  Text,
+  UnorderedList,
+} from '@chakra-ui/react';
 
 export const Header = () => {
   return (
@@ -12,22 +19,28 @@ export const Header = () => {
         </Text>
       </Heading>
       <Text mt='4'>The portal address reader in the screenshot.</Text>
-      <Box mt='4' borderRadius='lg' borderWidth='1px' p='3' fontSize='sm'>
-        <Text ml='1em' textIndent='-1em'>
-          Supported formats:
-          <br />
-          JPEG, PNG
-        </Text>
-        <Text mt='0.5' ml='1em' textIndent='-1em'>
-          Supported resolutions:
-          <br />
-          1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-          3840x2160, 1280x720
-        </Text>
-        <Text mt='0.5'>
-          To read from a PS4 or Switch screenshot, change the recognition
-          profile in the settings.
-        </Text>
+      <Box
+        mt='4'
+        borderRadius='lg'
+        borderWidth='1px'
+        paddingBlock='2'
+        paddingInline='4'
+        fontSize='sm'
+      >
+        <UnorderedList>
+          <ListItem>Supported formats: JPEG, PNG</ListItem>
+          <ListItem mt='0.5'>
+            Supported resolutions:
+            <br />
+            1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
+            3840x2160, 1280x720
+          </ListItem>
+          <ListItem mt='0.5'>
+            To read from a PS4 or Switch screenshot, change the recognition
+            profile to <Code>PS4, Switch</Code> in the settings. (Accuracy is
+            not good)
+          </ListItem>
+        </UnorderedList>
       </Box>
     </>
   );
