@@ -1,4 +1,5 @@
 import { CROP_PROFILES } from '@/config';
+import { CropProfile } from '@/types';
 
 export const isFileValid = (file: File | Blob) => {
   if (!('type' in file)) return false;
@@ -20,6 +21,9 @@ export const getAspectRatio = (
 ): [number, number] | undefined => {
   const h = img.naturalHeight;
   switch (img.naturalWidth) {
+    case 1280:
+      if (h === 720) return [16, 9];
+      break;
     case 1920:
       if (h === 1080) return [16, 9];
       else if (h === 1200) return [16, 10];
@@ -43,9 +47,13 @@ export const getAspectRatio = (
 
 export const getResizeSpec = (
   img: HTMLImageElement,
-): [1920, 1080 | 1200 | 1440] => {
+): [keyof CropProfile, number] | undefined => {
   const h = img.naturalHeight;
-  switch (img.naturalWidth) {
+  const w = img.naturalWidth;
+  switch (w) {
+    case 1280:
+      if (h === 720) return [1280, 720];
+      break;
     case 1920:
       if (h === 1080) return [1920, 1080];
       else if (h === 1200) return [1920, 1200];
@@ -64,7 +72,7 @@ export const getResizeSpec = (
     default:
       break;
   }
-  return [1920, 1080];
+  return;
 };
 
 export const getAddressBase64 = (img: HTMLImageElement): string | false => {
@@ -76,7 +84,11 @@ export const getAddressBase64 = (img: HTMLImageElement): string | false => {
   const canvas = document.createElement('canvas');
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const ctx = canvas.getContext('2d')!;
-  const [canvasWidth, canvasHeight] = getResizeSpec(img);
+
+  const resizeSpec = getResizeSpec(img);
+  if (!resizeSpec) return false;
+
+  const [canvasWidth, canvasHeight] = resizeSpec;
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
   ctx.drawImage(
@@ -93,6 +105,8 @@ export const getAddressBase64 = (img: HTMLImageElement): string | false => {
 
   // Crop portal address
   const cropProfile = CROP_PROFILES[canvasWidth][canvasHeight];
+  if (!cropProfile) return false;
+
   const addrImage = ctx.getImageData(
     cropProfile.x,
     cropProfile.y,

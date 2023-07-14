@@ -55,13 +55,17 @@ export const FooterAbout = () => {
                     <Code>1920x1080</Code> , <Code>1920x1200</Code> ,{' '}
                     <Code>1920x1440</Code> , <Code>2048x1536</Code> ,{' '}
                     <Code>2560x1440</Code> , <Code>2560x1600</Code> ,{' '}
-                    <Code>3840x2160</Code>
+                    <Code>3840x2160</Code> , <Code>1280x720</Code>
                   </ListItem>
                   <ListItem>
                     Currently, due to the limitation of accuracy, other sizes
                     will be rejected
                   </ListItem>
                 </UnorderedList>
+              </ListItem>
+              <ListItem ml='4'>
+                To read from a PS4 or Switch screenshot, change the recognition
+                profile in the settings.
               </ListItem>
               <ListItem ml='4'>
                 Send only the cropped glyphs to the server

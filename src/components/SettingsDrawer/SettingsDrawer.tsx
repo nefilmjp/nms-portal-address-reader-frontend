@@ -22,7 +22,7 @@ import { useRef } from 'react';
 import { FaGear } from 'react-icons/fa6';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-import { DEFAULT_SETTINGS } from '@/config';
+import { DEFAULT_SETTINGS, IMAGE_PROFILES } from '@/config';
 
 import type { AppSettings } from '@/types';
 
@@ -192,7 +192,7 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
                 Recognition profile
               </FormLabel>
               <Select
-                w='7em'
+                w='10em'
                 id='options-profile'
                 value={options.profile || 'pc'}
                 onChange={(event) => {
@@ -203,8 +203,11 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
                   });
                 }}
               >
-                <option value='pc'>Normal</option>
-                <option value='ps4'>PS4</option>
+                {Object.entries(IMAGE_PROFILES).map(([value, label]) => (
+                  <option value={value} key={`recognition-profile-${value}`}>
+                    {label}
+                  </option>
+                ))}
               </Select>
             </FormControl>
             <Divider mt='4' />

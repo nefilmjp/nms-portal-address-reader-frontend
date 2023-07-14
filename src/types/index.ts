@@ -5,6 +5,11 @@ export type OnlyTypeKey<T extends Object, ExpectType> = {
 
 export type RecognitionProfile = 'pc' | 'ps4';
 
+export type CropProfile = Record<
+  1280 | 1920,
+  Record<number, { x: number; y: number; box: number }>
+>;
+
 export interface AppSettings {
   /** Optional output */
   formattedOutput?: boolean;

@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Code, Heading, Text } from '@chakra-ui/react';
 
 export const Header = () => {
   return (
@@ -22,7 +22,11 @@ export const Header = () => {
           Supported resolutions:
           <br />
           1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-          3840x2160
+          3840x2160, 1280x720
+        </Text>
+        <Text mt='0.5'>
+          To read from a PS4 or Switch screenshot, change the recognition
+          profile in the settings.
         </Text>
       </Box>
     </>
