@@ -1,4 +1,4 @@
-import { Box, Code, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 export const Header = () => {
   return (
