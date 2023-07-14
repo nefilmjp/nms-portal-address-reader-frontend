@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { FaCoffee } from 'react-icons/fa';
 
-export const FooterKofi = () => {
+export const FooterKofiWidget = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
