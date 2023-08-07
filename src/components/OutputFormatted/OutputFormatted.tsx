@@ -10,7 +10,7 @@ interface FormattedOutputProps {
   addrArray: AddressArray | undefined;
 }
 
-export const FormattedOutput = ({ ...props }: FormattedOutputProps) => {
+export const OutputFormatted = ({ ...props }: FormattedOutputProps) => {
   const { options, addrArray } = props;
 
   const formatHex = useMemo(
@@ -50,26 +50,24 @@ export const FormattedOutput = ({ ...props }: FormattedOutputProps) => {
     }
   }, [addrArray, options, formatHex, formatDec]);
 
-  if (!options.formattedOutput) return null;
-
   return (
     <>
-      <InputGroup mt='4' size='md'>
+      <InputGroup size='md'>
         <Input
+          isDisabled={!formatted}
+          placeholder='User-specified format'
           pr='4.5rem'
           type='text'
           value={formatted || ''}
-          placeholder='User-specified format'
-          isDisabled={!formatted}
         />
         <InputRightElement width='4.5rem'>
           <Button
             h='1.75rem'
+            isDisabled={!formatted}
             size='sm'
             onClick={() => {
               navigator.clipboard.writeText(formatted || '');
             }}
-            isDisabled={!formatted}
           >
             Copy
           </Button>

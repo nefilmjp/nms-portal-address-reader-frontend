@@ -87,29 +87,28 @@ export const SendButton = ({ ...props }: SendButtonProps) => {
       {!options.sendImmediately && (
         <Center mt='6'>
           <Button
-            size='lg'
             isDisabled={!source || isBusy || Boolean(addrArray)}
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            onClick={() => onClick(options.profile || 'pc', source!)}
+            onClick={() => onClick(options.profile || 'pc', source!)} // eslint-disable-line @typescript-eslint/no-non-null-assertion
+            size='lg'
           >
             Send
           </Button>
         </Center>
       )}
-      <Modal onClose={onClose} isOpen={isOpen}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay>
           <Box
-            display='flex'
-            justifyContent='center'
             alignItems='center'
+            display='flex'
             h='100dvh'
+            justifyContent='center'
           >
             <Spinner
-              thickness='4px'
-              speed='0.65s'
-              emptyColor='gray.200'
               color='blue.500'
+              emptyColor='gray.200'
               size='xl'
+              speed='0.65s'
+              thickness='4px'
             />
           </Box>
         </ModalOverlay>

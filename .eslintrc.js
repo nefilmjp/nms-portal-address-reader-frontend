@@ -41,6 +41,7 @@ module.exports = {
           'warn',
           { varsIgnorePattern: 'debug' },
         ],
+        'react/jsx-sort-props': ['error', { multiline: 'last' }],
       },
       overrides: [
         // Vitest

@@ -1,0 +1,35 @@
+{
+  "header": {
+    "lead": "The portal address reader in the screenshot.",
+    "res": "Supported resolutions:",
+    "format": "Supported format:"
+  },
+  "tabs": {
+    "file": "File",
+    "dropzone": "Drop the file here, or click to select a file.",
+    "clipboard": "Clipboard",
+    "paste": "Paste the screenshot from Clipboard",
+    "download": "Download",
+    "placeholder": "Enter the URL",
+    "reset": "Reset"
+  },
+  "profile": {
+    "label": "Image profile:"
+  },
+  "send": {
+    "label": "Send"
+  },
+  "result": {
+    "source": "Source",
+    "result": "Result",
+    "copy": "Copy",
+    "dec": "Comma-separated decimal",
+    "hex": "12-digit hex"
+  },
+  "optinos": {
+    "sendImmediately": {
+      "label": "Send immediately",
+      "tooltip": "Send immediately upon image detection."
+    }
+  }
+}

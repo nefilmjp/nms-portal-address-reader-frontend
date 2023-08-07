@@ -11,20 +11,20 @@ export const SourcePreview = ({ ...props }: SourcePreviewProps) => {
     <Center mt='6'>
       {source ? (
         <Image
-          src={source}
           alt=''
           aspectRatio='384 / 32'
-          w='100%'
           maxW='384px'
           objectFit='contain'
+          src={source}
+          w='100%'
         />
       ) : (
         <Center
+          aspectRatio='384 / 32'
           border='1px'
           borderBottom='none'
-          aspectRatio='384 / 32'
-          w='100%'
           maxW='384px'
+          w='100%'
         >
           <Text color='gray'>Source</Text>
         </Center>

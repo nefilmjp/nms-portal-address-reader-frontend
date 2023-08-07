@@ -8,22 +8,24 @@ import {
   Tab,
   TabPanel,
   Center,
+  Stack,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useMount, useUpdateEffect } from 'react-use';
 
 import { Footer } from '@/components/Footer';
-import { FormattedOutput } from '@/components/FormattedOutput';
 import { Header } from '@/components/Header';
-import { ImageOutput } from '@/components/ImageOutput';
 import { Loading } from '@/components/Loading';
+import { OutputDecimal } from '@/components/OutputDecimal';
+import { OutputFormatted } from '@/components/OutputFormatted';
+import { OutputHex } from '@/components/OutputHex';
+import { OutputImage } from '@/components/OutputImage';
 import { Result } from '@/components/Result/Result';
 import { SendButton } from '@/components/SendButton';
 import { SourceClipboard } from '@/components/SourceClipboard';
 import { SourceDownload } from '@/components/SourceDownload';
 import { SourceFile } from '@/components/SourceFile';
 import { SourcePreview } from '@/components/SourcePreview';
-import { TextOutput } from '@/components/TextOutput';
 import { Unavailable } from '@/components/Unavailable';
 import { API_URL, DEFAULT_SETTINGS } from '@/config';
 
@@ -69,7 +71,7 @@ export default function Home() {
     <>
       <main>
         <Center>
-          <Container maxW='2xl' mt='6' mb='16'>
+          <Container maxW='2xl' mb='16' mt='6'>
             <Header />
 
             <Tabs mt='6' onChange={() => setSource(undefined)}>
@@ -95,18 +97,25 @@ export default function Home() {
             </Tabs>
 
             <SendButton
-              options={options}
-              source={source}
               addrArray={addrArray}
+              options={options}
               setAddrArray={setAddrArray}
+              source={source}
             />
 
             <SourcePreview source={source} />
             <Result addrArray={addrArray} setAddrArray={setAddrArray} />
 
-            <TextOutput addrArray={addrArray} />
-            <FormattedOutput options={options} addrArray={addrArray} />
-            <ImageOutput addrArray={addrArray} />
+            <Stack mt='6' spacing='4'>
+              {!options.disableDecimal && (
+                <OutputDecimal addrArray={addrArray} />
+              )}
+              {!options.disableHex && <OutputHex addrArray={addrArray} />}
+              {options.formattedOutput && (
+                <OutputFormatted addrArray={addrArray} options={options} />
+              )}
+              {!options.disableImage && <OutputImage addrArray={addrArray} />}
+            </Stack>
           </Container>
         </Center>
       </main>

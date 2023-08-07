@@ -104,18 +104,18 @@ export const SourceDownload = ({ ...props }: SourceDownloadProps) => {
   return (
     <>
       <Input
-        size='lg'
         border='1px'
-        type='text'
-        placeholder='Enter the URL'
         isDisabled={isBusy}
         onChange={handleInput}
+        placeholder='Enter the URL'
+        size='lg'
+        type='text'
         value={value}
       />
-      <HStack mt='4' spacing='4' justifyContent='center'>
+      <HStack justifyContent='center' mt='4' spacing='4'>
         <Button
-          variant='outline'
           isDisabled={!value || isBusy}
+          variant='outline'
           onClick={() => {
             setValue('');
             setDownloadUrl(undefined);

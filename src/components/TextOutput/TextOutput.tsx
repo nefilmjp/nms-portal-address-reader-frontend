@@ -3,14 +3,15 @@ import { useMemo } from 'react';
 
 import { addrArrayToDec, addrArrayToHex } from '@/utils/converter';
 
-import type { AddressArray } from '@/types';
+import type { AddressArray, AppSettings } from '@/types';
 
 interface ResultOutputProps {
+  options: AppSettings;
   addrArray: AddressArray | undefined;
 }
 
 export const TextOutput = ({ ...props }: ResultOutputProps) => {
-  const { addrArray } = props;
+  const { options, addrArray } = props;
 
   const dec = useMemo(
     () => (addrArray ? addrArrayToDec(addrArray, ',', 1) : undefined),
@@ -24,48 +25,52 @@ export const TextOutput = ({ ...props }: ResultOutputProps) => {
 
   return (
     <>
-      <InputGroup mt='6' size='md'>
-        <Input
-          pr='4.5rem'
-          type='text'
-          value={dec || ''}
-          placeholder='Comma-separated decimal'
-          isDisabled={!hex}
-        />
-        <InputRightElement width='4.5rem'>
-          <Button
-            h='1.75rem'
-            size='sm'
-            onClick={() => {
-              navigator.clipboard.writeText(dec || '');
-            }}
-            isDisabled={!dec}
-          >
-            Copy
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-      <InputGroup mt='4' size='md'>
-        <Input
-          pr='4.5rem'
-          type='text'
-          value={hex || ''}
-          placeholder='12-digit hex'
-          isDisabled={!hex}
-        />
-        <InputRightElement width='4.5rem'>
-          <Button
-            h='1.75rem'
-            size='sm'
-            onClick={() => {
-              navigator.clipboard.writeText(hex || '');
-            }}
+      {!options.disableDecimal && (
+        <InputGroup mt='4' size='md'>
+          <Input
             isDisabled={!hex}
-          >
-            Copy
-          </Button>
-        </InputRightElement>
-      </InputGroup>
+            placeholder='Comma-separated decimal'
+            pr='4.5rem'
+            type='text'
+            value={dec || ''}
+          />
+          <InputRightElement width='4.5rem'>
+            <Button
+              h='1.75rem'
+              isDisabled={!dec}
+              size='sm'
+              onClick={() => {
+                navigator.clipboard.writeText(dec || '');
+              }}
+            >
+              Copy
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      )}
+      {!options.disableHex && (
+        <InputGroup mt='4' size='md'>
+          <Input
+            isDisabled={!hex}
+            placeholder='12-digit hex'
+            pr='4.5rem'
+            type='text'
+            value={hex || ''}
+          />
+          <InputRightElement width='4.5rem'>
+            <Button
+              h='1.75rem'
+              isDisabled={!hex}
+              size='sm'
+              onClick={() => {
+                navigator.clipboard.writeText(hex || '');
+              }}
+            >
+              Copy
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      )}
     </>
   );
 };

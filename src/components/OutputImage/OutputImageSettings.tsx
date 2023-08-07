@@ -9,15 +9,15 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import { defaultCanvasOp, type CanvasOptions } from './ImageOutput';
-import { ImageOutputNumberInput } from './ImageOutputNumberInput';
+import { defaultCanvasOp, type CanvasOptions } from './OutputImage';
+import { OutputImageNumberInput } from './OutputImageNumberInput';
 
-interface ImageOutputSettingsProps {
+interface OutputImageSettingsProps {
   canvasOp: CanvasOptions;
   setCanvasOp: (canvasOptions: CanvasOptions) => void;
 }
 
-export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
+export const OutputImageSettings = ({ ...props }: OutputImageSettingsProps) => {
   const { canvasOp, setCanvasOp } = props;
 
   return (
@@ -26,71 +26,71 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
         <HStack flexWrap='wrap'>
           <HStack whiteSpace='nowrap'>
             <Text>Font size</Text>
-            <ImageOutputNumberInput
-              propName='textSize'
-              min={10}
-              max={256}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={256}
+              min={10}
+              propName='textSize'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text>Padding</Text>
-            <ImageOutputNumberInput
-              propName='padding'
-              min={-10}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              min={-10}
+              propName='padding'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text>Spacing</Text>
-            <ImageOutputNumberInput
-              propName='spacing'
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              propName='spacing'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
         </HStack>
         <Text mt='4'>Text color</Text>
-        <HStack mt='2' flexWrap='wrap'>
+        <HStack flexWrap='wrap' mt='2'>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>R</Text>
-            <ImageOutputNumberInput
-              propName='textRed'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='textRed'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>G</Text>
-            <ImageOutputNumberInput
-              propName='textGreen'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='textGreen'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>B</Text>
-            <ImageOutputNumberInput
-              propName='textBlue'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='textBlue'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>Opacity (%)</Text>
-            <ImageOutputNumberInput
-              propName='textOpacity'
-              min={0}
-              max={100}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={100}
+              min={0}
+              propName='textOpacity'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
@@ -99,79 +99,79 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
         <HStack mt='4'>
           <Text>Text shadow</Text>
           <Switch
-            size='sm'
             id='canvas-options-shadow'
             isChecked={canvasOp.shadow}
+            size='sm'
             onChange={(event) => {
               setCanvasOp({ ...canvasOp, shadow: event.target.checked });
             }}
           />
         </HStack>
-        <HStack mt='2' flexWrap='wrap'>
+        <HStack flexWrap='wrap' mt='2'>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>R</Text>
-            <ImageOutputNumberInput
-              propName='shadowRed'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='shadowRed'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>G</Text>
-            <ImageOutputNumberInput
-              propName='shadowGreen'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='shadowGreen'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>B</Text>
-            <ImageOutputNumberInput
-              propName='shadowBlue'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='shadowBlue'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>Opacity (%)</Text>
-            <ImageOutputNumberInput
-              propName='shadowOpacity'
-              min={0}
-              max={100}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={100}
+              min={0}
+              propName='shadowOpacity'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
         </HStack>
-        <HStack mt='2' flexWrap='wrap'>
+        <HStack flexWrap='wrap' mt='2'>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>OffsetX</Text>
-            <ImageOutputNumberInput
-              propName='shadowOffsetX'
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              propName='shadowOffsetX'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>OffsetY</Text>
-            <ImageOutputNumberInput
-              propName='shadowOffsetY'
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              propName='shadowOffsetY'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>Blur</Text>
-            <ImageOutputNumberInput
-              propName='shadowBlur'
-              min={0}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              min={0}
+              propName='shadowBlur'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
@@ -180,57 +180,57 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
         <HStack mt='4'>
           <Text>Background color</Text>
           <Switch
-            size='sm'
             id='canvas-options-bg'
             isChecked={canvasOp.bg}
+            size='sm'
             onChange={(event) => {
               setCanvasOp({ ...canvasOp, bg: event.target.checked });
             }}
           />
         </HStack>
-        <HStack mt='2' flexWrap='wrap'>
+        <HStack flexWrap='wrap' mt='2'>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>R</Text>
-            <ImageOutputNumberInput
-              propName='bgRed'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='bgRed'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>G</Text>
-            <ImageOutputNumberInput
-              propName='bgGreen'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='bgGreen'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>B</Text>
-            <ImageOutputNumberInput
-              propName='bgBlue'
-              min={0}
-              max={255}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={255}
+              min={0}
+              propName='bgBlue'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
           <HStack whiteSpace='nowrap'>
             <Text fontSize='sm'>Opacity (%)</Text>
-            <ImageOutputNumberInput
-              propName='bgOpacity'
-              min={0}
-              max={100}
+            <OutputImageNumberInput
               canvasOp={canvasOp}
+              max={100}
+              min={0}
+              propName='bgOpacity'
               setCanvasOp={setCanvasOp}
             />
           </HStack>
         </HStack>
-        <Alert status='info' mt='4' fontSize='sm'>
+        <Alert fontSize='sm' mt='4' status='info'>
           <AlertIcon />
           If the canvas is larger than the container, the preview is scaled
           down.
@@ -239,9 +239,9 @@ export const ImageOutputSettings = ({ ...props }: ImageOutputSettingsProps) => {
         </Alert>
         <Center mt='4'>
           <Button
+            onClick={() => setCanvasOp(defaultCanvasOp)}
             size='sm'
             variant='outline'
-            onClick={() => setCanvasOp(defaultCanvasOp)}
           >
             Reset
           </Button>

@@ -11,12 +11,12 @@ import {
 import { useMemo, useRef, useState } from 'react';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-import styles from './ImageOutput.module.scss';
-import { ImageOutputSettings } from './ImageOutputSettings';
+import styles from './OutputImage.module.scss';
+import { OutputImageSettings } from './OutputImageSettings';
 
 import type { AddressArray } from '@/types';
 
-interface ImageOutputProps {
+interface OutputImageProps {
   addrArray: AddressArray | undefined;
 }
 
@@ -69,7 +69,7 @@ export const defaultCanvasOp: CanvasOptions = {
   shadowBlur: 5,
 };
 
-export const ImageOutput = ({ ...props }: ImageOutputProps) => {
+export const OutputImage = ({ ...props }: OutputImageProps) => {
   const { addrArray } = props;
 
   // const isOpen = useRef<boolean>(false);
@@ -207,11 +207,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
   }, [addrArray, canvasOp]);
 
   return (
-    <Accordion
-      mt='4'
-      allowToggle
-      // onChange={(idx) => (isOpen.current = idx === -1 ? false : true)}
-    >
+    <Accordion allowToggle>
       <AccordionItem>
         <AccordionButton>
           <Box as='span' flex='1' textAlign='left'>
@@ -220,12 +216,12 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>
-          <canvas ref={canvasRef} className={styles.canvas} />
-          <HStack mt='4' spacing='4' justifyContent='center'>
+          <canvas className={styles.canvas} ref={canvasRef} />
+          <HStack justifyContent='center' mt='4' spacing='4'>
             {canCopy && (
               <Button
-                size='lg'
                 isDisabled={!addrArray}
+                size='lg'
                 onClick={async () => {
                   const [canvas] = getCanvas();
                   if (!canvas) return;
@@ -240,8 +236,8 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
               </Button>
             )}
             <Button
-              size='lg'
               isDisabled={!addrArray}
+              size='lg'
               onClick={() => {
                 const anchor = document.createElement('a');
                 const [canvas] = getCanvas();
@@ -254,7 +250,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
               Download
             </Button>
           </HStack>
-          <Accordion mt='4' allowToggle borderWidth='1px' borderRadius='md'>
+          <Accordion allowToggle borderRadius='md' borderWidth='1px' mt='4'>
             <AccordionItem border='none'>
               <AccordionButton>
                 <Box as='span' flex='1' textAlign='left'>
@@ -263,7 +259,7 @@ export const ImageOutput = ({ ...props }: ImageOutputProps) => {
                 <AccordionIcon />
               </AccordionButton>
               <AccordionPanel mt='2'>
-                <ImageOutputSettings
+                <OutputImageSettings
                   canvasOp={canvasOp}
                   setCanvasOp={setCanvasOp}
                 />

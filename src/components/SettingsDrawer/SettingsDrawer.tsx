@@ -6,23 +6,22 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Input,
   Button,
   useDisclosure,
   IconButton,
-  FormControl,
-  Switch,
-  FormLabel,
-  Select,
   Divider,
-  Box,
   Tooltip,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 import { FaGear } from 'react-icons/fa6';
 import { useLocalStorage, useMount, useUpdateEffect } from 'react-use';
 
-import { DEFAULT_SETTINGS, IMAGE_PROFILES } from '@/config';
+import { DEFAULT_SETTINGS } from '@/config';
+
+import { SettingsAdditionalInput } from './SettingsAdditionalInput';
+import { SettingsDisableOutput } from './SettingsDisableOutput';
+import { SettingsRecognitionProfile } from './SettingsRecognitionProfile';
+import { SettingsSendImmediately } from './SettingsSendImmediately';
 
 import type { AppSettings } from '@/types';
 
@@ -48,19 +47,19 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
 
   return (
     <>
-      <Tooltip label='Settings' hasArrow>
+      <Tooltip hasArrow label='Settings'>
         <IconButton
           aria-label='About'
           icon={<FaGear />}
-          ref={btnRef}
           onClick={onOpen}
+          ref={btnRef}
         />
       </Tooltip>
       <Drawer
-        isOpen={isOpen}
-        placement='right'
-        onClose={onClose}
         finalFocusRef={btnRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        placement='right'
       >
         <DrawerOverlay />
         <DrawerContent>
@@ -68,181 +67,28 @@ export const SettingsDrawer = ({ ...props }: SettingsDrawerProps) => {
           <DrawerHeader>Settings</DrawerHeader>
 
           <DrawerBody>
-            <FormControl
-              display='flex'
-              alignItems='center'
-              justifyContent='space-between'
-            >
-              <FormLabel htmlFor='options-formatted-output' mb='0'>
-                Additional output
-              </FormLabel>
-              <Switch
-                id='options-formatted-output'
-                isChecked={options.formattedOutput || false}
-                onChange={(event) => {
-                  setOptions({
-                    ...options,
-                    formattedOutput: event.target.checked,
-                  });
-                }}
-              />
-            </FormControl>
-            <Box ml='4'>
-              <FormControl
-                mt='4'
-                display='flex'
-                alignItems='center'
-                justifyContent='space-between'
-                // isDisabled={!options.formattedOutput}
-              >
-                <FormLabel htmlFor='options-format' mb='0'>
-                  Format
-                </FormLabel>
-                <Select
-                  id='options-format'
-                  value={options.format || 'hexU'}
-                  onChange={(event) => {
-                    setOptions({
-                      ...options,
-                      format: event.target.value as AppSettings['format'],
-                    });
-                  }}
-                >
-                  <option value='hexU'>Hex (upper case)</option>
-                  <option value='hexL'>Hex (lower case)</option>
-                  <option value='dec1'>Decimal (1-16)</option>
-                  <option value='dec0'>Decimal (0-15)</option>
-                </Select>
-              </FormControl>
-              <FormControl
-                mt='4'
-                display='flex'
-                alignItems='center'
-                justifyContent='space-between'
-                // isDisabled={!options.formattedOutput}
-              >
-                <FormLabel htmlFor='options-prefix' mb='0'>
-                  Prefix
-                </FormLabel>
-                <Input
-                  id='options-prefix'
-                  width='10em'
-                  value={options.prefix || ''}
-                  onChange={(event) => {
-                    setOptions({
-                      ...options,
-                      prefix: event.target.value,
-                    });
-                  }}
-                />
-              </FormControl>
-              <FormControl
-                mt='4'
-                display='flex'
-                alignItems='center'
-                justifyContent='space-between'
-                // isDisabled={!options.formattedOutput}
-              >
-                <FormLabel htmlFor='options-suffix' mb='0'>
-                  Suffix
-                </FormLabel>
-                <Input
-                  id='options-suffix'
-                  width='10em'
-                  value={options.suffix || ''}
-                  onChange={(event) => {
-                    setOptions({
-                      ...options,
-                      suffix: event.target.value,
-                    });
-                  }}
-                />
-              </FormControl>
-              <FormControl
-                mt='4'
-                display='flex'
-                alignItems='center'
-                justifyContent='space-between'
-                // isDisabled={!options.formattedOutput}
-              >
-                <FormLabel htmlFor='options-delimiter' mb='0'>
-                  Delimiter
-                </FormLabel>
-                <Input
-                  id='options-delimiter'
-                  width='4em'
-                  value={options.delimiter || ''}
-                  onChange={(event) => {
-                    setOptions({
-                      ...options,
-                      delimiter: event.target.value,
-                    });
-                  }}
-                />
-              </FormControl>
-            </Box>
+            <SettingsAdditionalInput
+              options={options}
+              setOptions={setOptions}
+            />
             <Divider mt='4' />
-            <FormControl
-              mt='4'
-              display='flex'
-              alignItems='center'
-              justifyContent='space-between'
-            >
-              <FormLabel htmlFor='options-profile' mb='0'>
-                Recognition profile
-              </FormLabel>
-              <Select
-                w='10em'
-                id='options-profile'
-                value={options.profile || 'pc'}
-                onChange={(event) => {
-                  setOptions({
-                    ...options,
-                    profile:
-                      (event.target.value as AppSettings['profile']) || 'pc',
-                  });
-                }}
-              >
-                {Object.entries(IMAGE_PROFILES).map(([value, label]) => (
-                  <option value={value} key={`recognition-profile-${value}`}>
-                    {label}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
+            <SettingsDisableOutput options={options} setOptions={setOptions} />
             <Divider mt='4' />
-            <FormControl
-              mt='4'
-              display='flex'
-              alignItems='center'
-              justifyContent='space-between'
-            >
-              <Tooltip
-                label='Send immediately upon screenshot detection.'
-                hasArrow
-                openDelay={500}
-              >
-                <FormLabel htmlFor='options-send-immediately' mb='0'>
-                  Send immediately
-                </FormLabel>
-              </Tooltip>
-              <Switch
-                id='options-send-immediately'
-                isChecked={options.sendImmediately || false}
-                onChange={(event) => {
-                  setOptions({
-                    ...options,
-                    sendImmediately: event.target.checked,
-                  });
-                }}
-              />
-            </FormControl>
+            <SettingsRecognitionProfile
+              options={options}
+              setOptions={setOptions}
+            />
+            <Divider mt='4' />
+            <SettingsSendImmediately
+              options={options}
+              setOptions={setOptions}
+            />
           </DrawerBody>
 
           <DrawerFooter>
             <Button
-              variant='outline'
               onClick={() => setOptions(DEFAULT_SETTINGS)}
+              variant='outline'
             >
               Reset
             </Button>
