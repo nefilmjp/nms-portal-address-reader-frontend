@@ -24,7 +24,7 @@ export const FooterAbout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Tooltip hasArrow label='About this app'>
+      <Tooltip hasArrow label='About this app' placement='top-end'>
         <IconButton
           aria-label='About'
           icon={<FaCircleInfo />}
