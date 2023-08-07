@@ -24,7 +24,7 @@ export const FooterAbout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Tooltip label='About this app' hasArrow>
+      <Tooltip hasArrow label='About this app'>
         <IconButton
           aria-label='About'
           icon={<FaCircleInfo />}
@@ -34,8 +34,8 @@ export const FooterAbout = () => {
 
       <Modal
         isOpen={isOpen}
-        size='xl'
         onClose={onClose}
+        size='xl'
         // scrollBehavior='inside'
       >
         <ModalOverlay />
@@ -65,7 +65,8 @@ export const FooterAbout = () => {
               </ListItem>
               <ListItem ml='4'>
                 To read from a PS4 or Switch screenshot, change the recognition
-                profile to <Code>PS4, Switch</Code> in the settings.
+                profile to <Code>PS4, Switch</Code> in the settings (Accuracy is
+                not good)
               </ListItem>
               <ListItem ml='4'>
                 Send only the cropped glyphs to the server
@@ -89,61 +90,61 @@ export const FooterAbout = () => {
               </ListItem>
             </UnorderedList>
             <Text mt='4'>Contributing</Text>
-            <Text mt='1' ml='4'>
+            <Text ml='4' mt='1'>
               Reports, requests, and PRs are accepted on{' '}
               <Link
+                color='blue.400'
                 href='https://github.com/nefilmjp/nms-portal-address-reader-frontend#readme'
                 isExternal={true}
-                color='blue.400'
               >
                 GitHub
                 <Icon
                   as={FaExternalLinkAlt}
+                  h='0.8em'
                   ml='0.2em'
                   mr='0.2em'
-                  w='0.8em'
-                  h='0.8em'
                   verticalAlign='baseline'
+                  w='0.8em'
                 />
               </Link>
             </Text>
             <Text mt='4'>Author</Text>
-            <Text mt='1' ml='4'>
+            <Text ml='4' mt='1'>
               Nefilm (
               <Link
+                color='blue.400'
                 href='https://twitter.com/nefilm_rc'
                 isExternal={true}
-                color='blue.400'
               >
                 @nefilm_rc
                 <Icon
                   as={FaExternalLinkAlt}
+                  h='0.8em'
                   ml='0.2em'
                   mr='0.2em'
-                  w='0.8em'
-                  h='0.8em'
                   verticalAlign='baseline'
+                  w='0.8em'
                 />
               </Link>
               )
             </Text>
             <Text mt='4'>Special thanks</Text>
-            <Text mt='1' ml='4'>
+            <Text ml='4' mt='1'>
               No Man&#39;s Sky Discord Server [PC/CS] Members (Japanese
               community,{' '}
               <Link
+                color='blue.400'
                 href='https://disboard.org/ja/server/735105471471419463'
                 isExternal={true}
-                color='blue.400'
               >
                 Disboard
                 <Icon
                   as={FaExternalLinkAlt}
+                  h='0.8em'
                   ml='0.2em'
                   mr='0.2em'
-                  w='0.8em'
-                  h='0.8em'
                   verticalAlign='baseline'
+                  w='0.8em'
                 />
               </Link>
               )
@@ -151,7 +152,7 @@ export const FooterAbout = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button variant='outline' onClick={onClose}>
+            <Button onClick={onClose} variant='outline'>
               Close
             </Button>
           </ModalFooter>

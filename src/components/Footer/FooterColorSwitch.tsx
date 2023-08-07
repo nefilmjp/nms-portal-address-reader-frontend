@@ -12,7 +12,7 @@ export const FooterColorSwitch = () => {
   );
 
   return (
-    <Tooltip label={tooltipLabel} hasArrow>
+    <Tooltip hasArrow label={tooltipLabel}>
       <IconButton
         aria-label='Switch dark/light mode'
         icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}

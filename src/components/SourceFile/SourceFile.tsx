@@ -69,10 +69,10 @@ export const SourceFile = ({ ...props }: SourceFileProps) => {
   return (
     <>
       <Box
-        h='100px'
-        borderRadius='lg'
         border='1px'
+        borderRadius='lg'
         className={styles.container}
+        h='100px'
       >
         <div {...getRootProps()} className={styles.dropzone}>
           <Center h='100px' p='4'>

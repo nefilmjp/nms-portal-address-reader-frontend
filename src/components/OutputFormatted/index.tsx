@@ -1,0 +1,1 @@
+export { OutputFormatted } from './OutputFormatted';

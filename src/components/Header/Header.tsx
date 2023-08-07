@@ -20,25 +20,29 @@ export const Header = () => {
       </Heading>
       <Text mt='4'>The portal address reader in the screenshot.</Text>
       <Box
-        mt='4'
         borderRadius='lg'
         borderWidth='1px'
+        fontSize='sm'
+        mt='4'
         paddingBlock='2'
         paddingInline='4'
-        fontSize='sm'
       >
         <UnorderedList>
-          <ListItem>Supported formats: JPEG, PNG</ListItem>
+          <ListItem>
+            Supported formats: <Code>JPEG</Code> , <Code>PNG</Code>
+          </ListItem>
           <ListItem mt='0.5'>
             Supported resolutions:
             <br />
-            1920x1080, 1920x1200, 1920x1440, 2048x1536, 2560x1440, 2560x1600,
-            3840x2160, 1280x720
+            <Code>1920x1080</Code> , <Code>1920x1200</Code> ,{' '}
+            <Code>1920x1440</Code> , <Code>2048x1536</Code> ,{' '}
+            <Code>2560x1440</Code> , <Code>2560x1600</Code> ,{' '}
+            <Code>3840x2160</Code> , <Code>1280x720</Code>
           </ListItem>
           <ListItem mt='0.5'>
             To read from a PS4 or Switch screenshot, change the recognition
-            profile to <Code>PS4, Switch</Code> in the settings. (Accuracy is
-            not good)
+            profile to <Code>PS4, Switch</Code> in the settings (Accuracy is not
+            good)
           </ListItem>
         </UnorderedList>
       </Box>

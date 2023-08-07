@@ -6,10 +6,10 @@ import {
   NumberInputStepper,
 } from '@chakra-ui/react';
 
-import type { CanvasOptions } from './ImageOutput';
+import type { CanvasOptions } from './OutputImage';
 import type { OnlyTypeKey } from '@/types';
 
-interface ImageOutputNumberInputProps {
+interface OutputImageNumberInputProps {
   propName: OnlyTypeKey<CanvasOptions, number>;
   min?: number;
   max?: number;
@@ -18,9 +18,9 @@ interface ImageOutputNumberInputProps {
   setCanvasOp: (canvasOptions: CanvasOptions) => void;
 }
 
-export const ImageOutputNumberInput = ({
+export const OutputImageNumberInput = ({
   ...props
-}: ImageOutputNumberInputProps) => {
+}: OutputImageNumberInputProps) => {
   const {
     propName,
     min = Number.MIN_SAFE_INTEGER,
@@ -32,12 +32,12 @@ export const ImageOutputNumberInput = ({
 
   return (
     <NumberInput
-      size='xs'
-      w='4em'
-      min={min}
       max={max}
+      min={min}
+      size='xs'
       step={step}
       value={canvasOp[propName]}
+      w='4em'
       onChange={(valueString) =>
         setCanvasOp({
           ...canvasOp,

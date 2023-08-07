@@ -54,9 +54,9 @@ export const ResultGlyph = ({ ...props }: ResultGlyphProps) => {
               <PopoverBody>
                 <ResultEditor
                   addrArray={addrArray}
-                  setAddrArray={setAddrArray}
                   index={index}
                   onClose={onClose}
+                  setAddrArray={setAddrArray}
                 />
               </PopoverBody>
             </PopoverContent>

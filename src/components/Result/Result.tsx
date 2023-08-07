@@ -17,24 +17,18 @@ export const Result = ({ ...props }: ResultProps) => {
 
   return (
     <>
-      <Center>
+      <Center mb='6'>
         {addrArray ? (
           addrArray.map((_, idx) => (
             <ResultGlyph
-              key={`${id}-${idx}`}
               addrArray={addrArray}
-              setAddrArray={setAddrArray}
               index={idx}
+              key={`${id}-${idx}`}
+              setAddrArray={setAddrArray}
             />
           ))
         ) : (
-          <Center
-            border='1px'
-            aspectRatio='384 / 32'
-            // aspectRatio='384 / 55'
-            width='100%'
-            maxW='384px'
-          >
+          <Center aspectRatio='384 / 32' border='1px' maxW='384px' width='100%'>
             <Text color='gray'>Result</Text>
           </Center>
         )}

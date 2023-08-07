@@ -11,9 +11,15 @@ export type CropProfile = Record<
 >;
 
 export interface AppSettings {
+  /** Decimal output */
+  disableDecimal?: boolean;
+  /** Hex output */
+  disableHex?: boolean;
+  /** Image output */
+  disableImage?: boolean;
   /** Optional output */
   formattedOutput?: boolean;
-  format?: 'hexU' | 'hexL' | 'dec1' | 'dec0' | undefined;
+  format: 'hexU' | 'hexL' | 'dec1' | 'dec0';
   prefix?: string;
   suffix?: string;
   delimiter?: string;
@@ -31,6 +37,11 @@ export interface AppSettings {
   claheTileGridSizeY?: number;
   /** API Option */
   bfmLengthLimit?: number;
+}
+
+export interface SettingsProps {
+  options: AppSettings;
+  setOptions: (options: AppSettings) => void;
 }
 
 export type GlyphNumber =

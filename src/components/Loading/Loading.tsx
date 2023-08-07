@@ -4,18 +4,18 @@ export const Loading = () => {
   return (
     <main>
       <Box
-        w='100%'
-        h='100dvh'
-        display='flex'
         alignItems='center'
+        display='flex'
+        h='100dvh'
         justifyContent='center'
+        w='100%'
       >
         <Spinner
-          thickness='4px'
-          speed='0.65s'
-          emptyColor='gray.200'
           color='blue.500'
+          emptyColor='gray.200'
           size='xl'
+          speed='0.65s'
+          thickness='4px'
         />
       </Box>
     </main>

@@ -28,11 +28,11 @@ export const ResultEditor = ({ ...props }: ResultEditorProps) => {
         .map((_, i) => i)
         .map((_, idx) => (
           <button
+            key={`${id}-${idx}`}
             className={clsx(
               styles.button,
               isSelected(idx) && styles.isSelected,
             )}
-            key={`${id}-${idx}`}
             onClick={() => {
               const newAddrArray = [...addrArray] as AddressArray;
               newAddrArray.splice(index, 1, idx as GlyphNumber);

@@ -1,0 +1,38 @@
+{
+  "header": {
+    "lead": "スクリーンショットからポータルアドレスを読み取ります。",
+    "res": "対応解像度:",
+    "format": "対応フォーマット:"
+  },
+  "tabs": {
+    "file": "ファイル",
+    "clipboard": "クリップボード",
+    "download": "ダウンロード",
+    "dropzone": "ここにドロップするかクリックしてファイルを選択",
+    "paste": "クリップボードから貼り付ける",
+    "placeholder": "スクリーンショットのURLを入力",
+    "button": {
+      "reset": "リセット",
+      "download": "ダウンロード"
+    }
+  },
+  "profile": {
+    "label": "画像プロファイル:"
+  },
+  "send": {
+    "label": "送信"
+  },
+  "result": {
+    "source": "Source",
+    "result": "Result",
+    "copy": "Copy",
+    "dec": "カンマ区切り10進数",
+    "hex": "16進数12桁"
+  },
+  "optinos": {
+    "sendImmediately": {
+      "label": "即座に送信",
+      "tooltip": "スクリーンショットを検出したら即座に送信"
+    }
+  }
+}

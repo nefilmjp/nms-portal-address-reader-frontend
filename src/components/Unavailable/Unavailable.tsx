@@ -15,24 +15,24 @@ export const Unavailable = () => {
   return (
     <main>
       <Center>
-        <Container maxW='2xl' mt='6' mb='16'>
+        <Container maxW='2xl' mb='16' mt='6'>
           <Heading className='ff-geo' fontSize='2xl'>
             <span style={{ whiteSpace: 'nowrap' }}>No Man&#39;s Sky</span>{' '}
             <span style={{ whiteSpace: 'nowrap' }}>Portal Address Reader</span>
           </Heading>
 
           <Alert
+            alignItems='center'
+            flexDirection='column'
+            height='200px'
+            justifyContent='center'
             mt='6'
             status='error'
-            variant='subtle'
-            flexDirection='column'
-            alignItems='center'
-            justifyContent='center'
             textAlign='center'
-            height='200px'
+            variant='subtle'
           >
             <AlertIcon boxSize='40px' mr={0} />
-            <AlertTitle mt={4} mb={1} fontSize='lg'>
+            <AlertTitle fontSize='lg' mb={1} mt={4}>
               API server is offline
             </AlertTitle>
             <AlertDescription maxWidth='sm'>
@@ -41,18 +41,18 @@ export const Unavailable = () => {
               If this condition persists for over a day, please get in touch
               with{' '}
               <Link
+                color='blue.400'
                 href='https://twitter.com/nefilm_rc'
                 isExternal={true}
-                color='blue.400'
               >
                 @nefilm_rc
                 <Icon
                   as={FaExternalLinkAlt}
+                  h='0.8em'
                   ml='0.2em'
                   mr='0.2em'
-                  w='0.8em'
-                  h='0.8em'
                   verticalAlign='baseline'
+                  w='0.8em'
                 />
               </Link>
               .
