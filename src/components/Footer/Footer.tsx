@@ -5,7 +5,7 @@ import { DEFAULT_SETTINGS } from '@/config';
 
 import { FooterAbout } from './FooterAbout';
 import { FooterColorSwitch } from './FooterColorSwitch';
-// import { FooterKofiWidget } from './FooterKofiWidget';
+import { FooterKofiWidget } from './FooterKofiWidget';
 import { SettingsDrawer } from '../SettingsDrawer';
 
 import type { AppSettings } from '@/types';
@@ -34,7 +34,7 @@ export const Footer = ({ ...props }: FooterProps) => {
           <FooterColorSwitch />
           <SettingsDrawer options={options} setOptions={setOptions} />
           <FooterAbout />
-          {/* <FooterKofiWidget /> */}
+          <FooterKofiWidget />
         </HStack>
       </Box>
     </footer>
