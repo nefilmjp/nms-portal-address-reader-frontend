@@ -43,7 +43,7 @@ export const FooterAbout = () => {
           <ModalHeader>About</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Spec and limitations</Text>
+            <Text>Specs and limitations</Text>
             <UnorderedList mt='1'>
               <ListItem ml='4'>
                 Supported formats: <Code>JPEG</Code> , <Code>PNG</Code>
@@ -86,7 +86,7 @@ export const FooterAbout = () => {
                 Some browsers have limited clipboard functionality
               </ListItem>
               <ListItem ml='4'>
-                Some sites/services may reject downloads of app
+                Some sites/services may reject downloads by the app
               </ListItem>
             </UnorderedList>
             <Text mt='4'>Contributing</Text>
